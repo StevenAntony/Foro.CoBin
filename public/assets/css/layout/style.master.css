@@ -1,0 +1,108 @@
+@import url('animation.master.css');
+/*=======HEADER TOP======*/
+
+.head-top {
+  background-color: #ffffff;
+  height: 70px;
+}
+.head-top .row {
+  height: 70px;
+}
+
+/* Columna de la izquierda */
+.head-top .col-left .sigla-web {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.head-top .col-left .name-web {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #212529;
+}
+/* Columna de la derecha */
+
+.head-top .col-right .network {
+  display: block;
+  width: 50px;
+  /* border-bottom: 1px solid #636b6f; */
+  text-align: center;
+}
+.head-top .col-right .network:hover{
+  border-bottom: 1px solid #636b6f;
+}
+.head-top .col-right .network span{
+  line-height: 3.3;
+  font-size: 1.4rem;
+}
+
+/*=======HEADER CENTER======*/
+
+.head-center{
+  height: 50px;
+  background-color: #0e76a8;
+}
+.head-center .col-left .title{
+  color:#ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+.head-center .row{
+  height: 50px;
+}
+.head-center .col-right .options{
+  cursor: inherit;
+  /* text-transform: uppercase; */
+  font-size: 1rem;
+  position: relative;
+  color: #ffffff;
+}
+.head-center .col-right .option-item{
+  padding: 12px 30px;
+  position: relative;
+  /* letter-spacing: 1px; */
+}
+.head-center .col-right .sub-options{
+  background-color: #ffffff;
+  cursor: pointer;
+  color: #636b6f;
+  left: 0;
+  width: 100%;
+  top: 49px;
+  z-index: 1;
+  position: absolute;
+  display: none;
+  opacity: 0;
+}
+
+.head-center .col-right .sub-option-item {
+  /* padding: 5px 20px; */
+  border-left: 1px solid #ffffff;
+  border-bottom: 0.5px solid #c2d0d6;
+}
+.head-center .col-right .sub-option-item a{
+  padding: 5px 20px;
+  display: block;
+}
+.head-center .col-right .sub-option-item:hover{
+  border-left: 1px solid #0e76a8;
+}
+
+.head-center .col-right .option-item:hover .sub-options {
+  animation: heartbit 0.3s ease-in;
+  display: block;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* HEADER BOTTOM*/
+.head-bottom{
+  height: 40px;
+  background: -webkit-linear-gradient(top, #c2c9cc, #e1e8eb);
+}
+
+.head-bottom .row{
+  height: 40px;
+}

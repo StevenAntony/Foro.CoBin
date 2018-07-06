@@ -1,0 +1,37 @@
+body{
+  color: #636b6f;
+  font-family: 'Raleway',sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+a,a:hover{
+  text-decoration: none;
+  color:inherit;
+}
+ul{
+  margin-bottom: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+label{
+  margin: 0;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.jc-spaceBetween{
+  justify-content: space-between;
+}
+.jc-flexEnd{
+  justify-content: flex-end;
+}
+
+.ai-center{
+  align-items: center;
+}
