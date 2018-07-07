@@ -1,6 +1,6 @@
 body{
   color: #636b6f;
-  font-family: 'Raleway',sans-serif;
+  font-family: sans-serif;
   font-weight: 100;
   font-size: 16px;
   padding: 0;
@@ -20,6 +20,10 @@ li{
 label{
   margin: 0;
 }
+.container{
+  padding: 0;
+}
+
 
 .d-flex{
   display: flex;
@@ -30,6 +34,9 @@ label{
 }
 .jc-flexEnd{
   justify-content: flex-end;
+}
+.jc-center{
+  justify-content: center;
 }
 
 .ai-center{

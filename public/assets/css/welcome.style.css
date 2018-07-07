@@ -1,0 +1,30 @@
+#welcome .col-right .login-user .btn-login {
+  /* height: 400px; */
+  width: 100%;
+  height: 50px;
+}
+#welcome .col-right .login-user .small{
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+#welcome .col-right .question-prominent .list-question {
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #ccabae;
+}
+
+#welcome .col-right .question-prominent .title-question {
+  padding: 10px 0;
+}
+
+#welcome .col-right .question-prominent .title-question .small{
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+#welcome .col-right .question-prominent .question-item{
+  height: 70px;
+}

@@ -10,3 +10,21 @@
     transform: translatex(0px);
   }
 }
+
+@keyframes showSearch {
+  0% {
+    width:200px;
+  }
+  100% {
+    width:300px;
+  }
+}
+
+@keyframes InverShowSearch {
+  0% {
+    width: 300px;
+  }
+  100% {
+    width: 200px;
+  }
+}

@@ -100,7 +100,78 @@
 </html> --}}
 
 @extends('layouts.master')
-
+@section('style')
+    <style>
+        #welcome .row{
+            margin: 0;
+        }
+        #welcome .box-left{
+            padding: 0 50px;
+        }
+        #welcome .col-left{
+            background-color: #ffffff;
+            height: 400px;
+        }
+        #welcome .box-right{
+            padding-right: 50px;
+        }
+    </style>
+@endsection
 @section('content')
+    <div id="welcome">
+        <div class="box">
+            <div class="contenedor">
+                <div class="content">
+                    <div style="height: 100px">a</div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="box-left">
+                                <div class="col-left">
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="box-right">
+                                <div class="col-right">
+                                    <div class="login-user"><button type="button" class="btn jc-center d-flex btn-login btn-default btn-success"><img src="{{asset("assets/img/icons/svg/052-usuario-2.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="display:block; margin-top: 4px">INICIAR SESIÒN</span></button></div>
+                                    <br>
+                                    <div class="login-user"><button type="button" class="btn jc-center d-flex btn-login btn-default btn-primary"><img src="{{asset("assets/img/icons/svg/070-documento.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="display:block; margin-top: 4px">REGISTRAR</span></button></div>
+                                    <br>
+                                    <div class="question-prominent">
+                                        <div class="title-question text-center btn-secondary"><img src="{{asset("assets/img/icons/svg/078-internet.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="x">ULTIMAS PREGUNTAS</span></div>
+                                        <div class="list-question">
+                                            <ul class="box-question">
+                                                @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
+                                                    <li class="question-item row">
+                                                        <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/005-estudiante.svg")}}" alt="" srcset="" width="25px" height="25px"></div>
+                                                        <div class="title-question-item"><span class="small">{{$ultimaP['data'][$i]->titulo_pre}}</span>{{$ultimaP['contRPT'][$i]}}</div>
+                                                    </li>
+                                                @endfor
+                                            </ul>
+                                        </div>
+                                        {{-- @foreach ($ultimaP['data'] as $b)
+                                            {{$b->nombre_categ}}
+                                        @endforeach
+                                        @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
+                                            {{$ultimaP['contRPT'][$i]}}
+                                        @endfor --}}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    {{-- <script>
+        $(".group-search").click(function () {
+            alert("sa")
+          });
+    </script> --}}
 @endsection

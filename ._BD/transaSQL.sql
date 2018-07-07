@@ -20,6 +20,8 @@ Create DataBase foroBinario
   values ('SOWS06SO','Windows');
   insert into categoria (codigo_categ,nombre_categ)
   values ('SOLN07SO','Linux');
+  insert into categoria (codigo_categ,nombre_categ)
+  values ('LPC+08OO','C++');
 --      TEMA
   insert into tema (codigo_categ,nombre_tem)
   values ('LPJS01OE','Array');
@@ -70,13 +72,13 @@ Create DataBase foroBinario
   -- insert into pregunta (codigo_pre,id_tem,user_id,titulo_pre,descripcion_pre,fecha_pre,hora_pre,estado_pre)
   -- values ('P01A',2,1,'Mostrar JSON','Como puedo mostrar un JSON en HMTL.','2018-04-07','10:08:20','habilitado');
   insert into pregunta (codigo_pre,id_tem,user_id,titulo_pre,descripcion_pre,fecha_pre,hora_pre,estado_pre)
-  values ('P02B',2,2,'Mostrar JSON','Como puedo mostrar un JSON en HMTL.','2018-04-07','10:08:20','habilitado');
+  values ('P02B',2,2,'Mostrar JSON','Como puedo mostrar un JSON en HMTL.','2018-05-07','10:08:20','habilitado');
   insert into pregunta (codigo_pre,id_tem,user_id,titulo_pre,descripcion_pre,fecha_pre,hora_pre,estado_pre)
-  values ('P03C',3,2,'Pulsar Teclado','Tengo un problema a la hora de llamar el evento key.','2018-04-07','10:08:20','habilitado');
+  values ('P03C',3,2,'Pulsar Teclado','Tengo un problema a la hora de llamar el evento key.','2018-06-07','10:08:20','habilitado');
   insert into pregunta (codigo_pre,id_tem,user_id,titulo_pre,descripcion_pre,fecha_pre,hora_pre,estado_pre)
-  values ('P04D',4,3,'Enviar Archivo img','como puedo enviar un file por la ruta GET.','2018-04-07','10:08:20','habilitado');
+  values ('P04D',4,3,'Enviar Archivo img','como puedo enviar un file por la ruta GET.','2018-07-07','10:08:20','habilitado');
   insert into pregunta (codigo_pre,id_tem,user_id,titulo_pre,descripcion_pre,fecha_pre,hora_pre,estado_pre)
-  values ('P05E',5,4,'Conectar a MYSQL','Como me puedo conectar a mysql.','2018-04-07','10:08:20','habilitado');
+  values ('P05E',5,4,'Conectar a MYSQL','Como me puedo conectar a mysql.','2018-08-07','10:08:20','habilitado');
   insert into pregunta (codigo_pre,id_tem,user_id,titulo_pre,descripcion_pre,fecha_pre,hora_pre,estado_pre)
   values ('P06F',6,4,'Relacionar Tabla','No puedo acceder de una tabla a otra, tengo problemas.','2018-04-07','10:08:20','habilitado');
 --      RESPUESTAS
@@ -128,6 +130,11 @@ Create DataBase foroBinario
   -- union
   -- select * from categoria where codigo_categ LIKE 'SO%'
 
+--> Mostrar ultimas preguntas
+select pg.codigo_pre,u.name,pg.titulo_pre,pg.fecha_pre,pg.hora_pre,ct.nombre_categ from users u inner join pregunta pg on u.id = pg.user_id
+inner join tema t on pg.id_tem = t.id_tem
+inner join categoria ct on t.codigo_categ = ct.codigo_categ
+order by pg.fecha_pre desc
 
 DELIMITER //
 CREATE FUNcTION holaMundo() RETURNS VARCHAR(20)
