@@ -11,5 +11,15 @@
 |
 */
 
+/**
+ * Web Rutas GET
+ */
+
 Route::get('/Foro.CoBin','webController@Index')->name('foro.index');
 Route::get('/Foro.CoBin/{area}/{categoria}', 'webController@CategoriaIndex')->name('foro.categoria');
+
+/**
+ * Web Rutas POST
+ */
+
+ Route::post('/Foro.CoBin/BusquedaMaster','webController@BusquedaPOST');

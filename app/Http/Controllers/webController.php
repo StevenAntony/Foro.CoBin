@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Procedure\WebProcedure;
+use JavaScript;
+use Response;
 // use App\Categoria;
 
 class webController extends Controller
@@ -40,5 +42,11 @@ class webController extends Controller
         }else{
             return 'no se encontro la pagina';
         }
+    }
+
+    public function BusquedaPOST()
+    {
+        return 'sa';
+        // return response()->json('as');
     }
 }

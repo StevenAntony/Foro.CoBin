@@ -22,6 +22,7 @@ Create DataBase foroBinario
   values ('SOLN07SO','Linux');
   insert into categoria (codigo_categ,nombre_categ)
   values ('LPC+08OO','C++');
+  INSERT INTO categoria(codigo_categ, nombre_categ) VALUES ('HR01ID','Visual Code');
 --      TEMA
   insert into tema (codigo_categ,nombre_tem)
   values ('LPJS01OE','Array');
@@ -142,3 +143,8 @@ BEGIN
     RETURN 'HolaMundo';
 END
 //
+
+
+--> REALIZAR BUSQUEDAS EN EL WELCOME
+
+select * from pregunta pg inner join respuesta rp on pg.codigo_pre = rp.codigo_pre where pg.titulo_pre like 'cre%'

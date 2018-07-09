@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Foro-CoBin</title>
         <!-- Icons -->
         {{-- <link rel="icon" href="{{asset('assets/img/logo/logo.png')}}" type="image/x-icon" > --}}
@@ -31,14 +31,16 @@
                 <div class="container">
                   <div class="content">
                     <div class="row jc-spaceBetween ai-center">
-                      <div class="col-sm-2">
+                      <!--col-sm-2-->
+                      <div class="">
                         <div class="box">
                           <div class="col-left">
                             <a href="{{route('foro.index')}}" title="Foro CoBin"><span class="sigla-web">CB</span><span class="name-web">CoBin</span></a>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                      <!--col-sm-3-->
+                      <div class="">
                         <div class="box">
                           <div class="col-right d-flex jc-flexEnd" style="height: 70px;">
                             <a href="#" class="network"><span class="ti-facebook"></span></a>
@@ -55,8 +57,8 @@
               <div class="head-center">
                <div class="container">
                  <div class="content">
-                   <div class="row ai-center jc-spaceBetween">
-                     <div class="col-lg-3">
+                   <div class="d-flex ai-center jc-spaceBetween">
+                     <div class="col-sm-3">
                       <div class="box">
                         <div class="col-left">
                           <span class="title">Foro</span>
@@ -66,7 +68,10 @@
                      <div class="">
                        <div class="box">
                          <div class="col-right">
-                           <nav class="nav">
+                           <div class="menu-burger">
+                             <button type="button" class="btn btn-burger"><i class="ti-view-list"></i></button>
+                           </div>
+                           <nav class="nav" id="content-burger" active='false'>
                              <ul class="options d-flex">
                                <li class="option-item"><label>Lenguajes</label>
                                  <ul class="sub-options">
@@ -109,8 +114,8 @@
               <div class="head-bottom">
                 <div class="container">
                   <div class="content">
-                    <div class="row jc-spaceBetween ai-center">
-                      <div class="col-lg-6">
+                    <div class="row  jc-spaceBetween ai-center">
+                      <div class="col-sm-6">
                         {{-- @foreach ($ruta as $r)
                             <span><a href="">{{$r}}</a> / </span>
                         @endforeach --}}
@@ -131,7 +136,7 @@
                         <div class="col-right">
                           <div class="form-search-group">
                             <input type="search" name="" id="input-search" placeholder="Buscar....">
-                            <button type="button" class="btn-search btn btn-default"><img src="{{asset("assets/img/icons/svg/064-busqueda.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"></button>
+                            <button type="button" id="sumit-search" class="btn-search btn btn-default"><img src="{{asset("assets/img/icons/svg/064-busqueda.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"></button>
                           </div>
                         </div>
                         {{-- <img src="{{asset("assets/img/icons/svg/064-busqueda.svg")}}" alt="triangle with all three sides equal" sizes="" srcset=""> --}}
@@ -151,6 +156,8 @@
 
         <!-- Bootstrap -->
         <script src="{{asset('js/app.js')}}"></script>
+        <script src="{{asset('assets/js/layout/script.master.js')}}"></script>
+        <script src="{{asset('assets/js/layout/script.busqueda.js')}}"></script>
         @yield('script')
     </body>
 </html>

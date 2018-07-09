@@ -14,7 +14,7 @@
 
         <style>
             html, body {
-                background-color: #fff;
+                background-colo r: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -110,7 +110,7 @@
         }
         #welcome .col-left{
             background-color: #ffffff;
-            height: 400px;
+            height: 200px;
         }
         #welcome .box-right{
             padding-right: 50px;
@@ -122,16 +122,16 @@
         <div class="box">
             <div class="contenedor">
                 <div class="content">
-                    <div style="height: 100px">a</div>
-                    <div class="row">
-                        <div class="col-lg-8">
+                    <div style="height: 100px"></div>
+                    <div class="d-flex jc-spaceBetween">
+                        <div class="col">
                             <div class="box-left">
-                                <div class="col-left">
-
+                                <div class="col-left" id="show-busqueda">
+                                    <div class="animation"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="" style="width: 380px;">
                             <div class="box-right">
                                 <div class="col-right">
                                     <div class="login-user"><button type="button" class="btn jc-center d-flex btn-login btn-default btn-success"><img src="{{asset("assets/img/icons/svg/052-usuario-2.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="display:block; margin-top: 4px">INICIAR SESIÒN</span></button></div>
@@ -143,20 +143,22 @@
                                         <div class="list-question">
                                             <ul class="box-question">
                                                 @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
-                                                    <li class="question-item row">
-                                                        <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/005-estudiante.svg")}}" alt="" srcset="" width="25px" height="25px"></div>
-                                                        <div class="title-question-item"><span class="small">{{$ultimaP['data'][$i]->titulo_pre}}</span>{{$ultimaP['contRPT'][$i]}}</div>
+                                                    <li class="row">
+                                                        <a href="#" class="question-item" style="width:100%; display:flex;">
+                                                            <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/005-estudiante.svg")}}" alt="" srcset="" width="40px" height="40px"></div>
+                                                            <div class="title-question-item">
+                                                                <h6 class="title-question-bd">{{$ultimaP['data'][$i]->titulo_pre}}</h6>
+                                                                <h6 class="small user-question" style="color:#9aa0ac"><i class="ti-hand-point-right"></i> {{$ultimaP['data'][$i]->name}}</h6>
+                                                            </div>
+                                                            <div class="time-date-question">
+                                                                <h6 class="small time-date">{{$ultimaP['data'][$i]->fecha_pre}}</h6>
+                                                                <h6 class="small time-date">{{$ultimaP['data'][$i]->hora_pre}}</h6>
+                                                            </div>
+                                                        </a>
                                                     </li>
                                                 @endfor
                                             </ul>
                                         </div>
-                                        {{-- @foreach ($ultimaP['data'] as $b)
-                                            {{$b->nombre_categ}}
-                                        @endforeach
-                                        @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
-                                            {{$ultimaP['contRPT'][$i]}}
-                                        @endfor --}}
-
                                     </div>
                                 </div>
                             </div>

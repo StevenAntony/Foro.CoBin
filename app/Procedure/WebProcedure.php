@@ -4,6 +4,7 @@ namespace App\Procedure;
 use Illuminate\Support\Facades\DB;
 use App\Categoria;
 use App\User;
+use App\Pregunta;
 
 class WebProcedure
 {
@@ -69,5 +70,15 @@ class WebProcedure
 
         return $List;
 
+    }
+
+    function BusquedaJSON($var) {
+        // select * from pregunta pg inner join respuesta rp on pg.codigo_pre = rp.codigo_pre where pg.titulo_pre like 'cre%'
+        $BD = new Pregunta;
+        $Result = $BD->join('respuesta','pregunta.codigo_pre','=','respuesta.codigo_pre')
+                    ->where('pregunta.titulo_pre','like',$var)
+                    ->get();
+
+        return $Result;
     }
 }
