@@ -28,6 +28,10 @@ label{
   padding: 0;
 }
 
+.text-muted-app {
+  color: #adb6bd !important;
+}
+
 
 .d-flex{
   display: flex;

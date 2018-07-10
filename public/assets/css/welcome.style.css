@@ -98,3 +98,21 @@
   border-color: transparent;
   border-top-color: currentColor;
 }
+
+/*
+* Unico solo para search
+*/
+.option-search-item{
+  padding: 20px 0px;
+}
+.option-search-item .title-search{
+  border-bottom: 1px solid #adb6bd;
+}
+.option-search-item .title-search .date-cuestion{
+  text-align: right;
+}
+.option-search-item .title-search .titulo-cuestion{
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 8px;
+}

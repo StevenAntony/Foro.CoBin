@@ -91,6 +91,10 @@ class WebProcedure
                 $List[$i]['respuesta'][$j] = $Result2[$j];
             }
         }
+
+        // var_dump(count($List['pregunta']));
+        // die();
+
         return $List;
     }
 }

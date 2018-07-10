@@ -129,7 +129,11 @@
                                 <div class="col-left" id="show-busqueda">
                                     <div class="loader"><div class="animation"></div></div>
                                     <div class="content-busqueda">
-
+                                        {{-- <div class="d-flex col-12">
+                                            <div class="option-search-item col-12">
+                                                <div class="title-search d-flex jc-spaceBetween"><img src="{{asset("assets/img/icons/svg/048-capas.svg")}}" alt="" srcset="" width="35px" height="35px"><h1 class="small titulo-cuestion" style="">NO PUEDO CONECTAR</h1><small class="small date-cuestion text-muted-app">2018-08-09<br> 10:20:10</small></div>
+                                            </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

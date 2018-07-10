@@ -135,7 +135,7 @@
                       <div class="">
                         <div class="col-right">
                           <div class="form-search-group">
-                            <input type="search" name="" id="input-search" placeholder="Buscar....">
+                            <input type="search" autocomplete="true" name="" id="input-search" placeholder="Buscar....">
                             <button type="button" id="sumit-search" class="btn-search btn btn-default"><img src="{{asset("assets/img/icons/svg/064-busqueda.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"></button>
                           </div>
                         </div>
