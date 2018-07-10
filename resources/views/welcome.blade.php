@@ -127,7 +127,10 @@
                         <div class="col">
                             <div class="box-left">
                                 <div class="col-left" id="show-busqueda">
-                                    <div class="animation"></div>
+                                    <div class="loader"><div class="animation"></div></div>
+                                    <div class="content-busqueda">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

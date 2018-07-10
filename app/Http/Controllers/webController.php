@@ -44,9 +44,14 @@ class webController extends Controller
         }
     }
 
-    public function BusquedaPOST()
+    public function BusquedaPOST(Request $request)
     {
-        return 'sa';
-        // return response()->json('as');
+        $Execute = new WebProcedure;
+        $variable = $request->input('input');
+        $buscado = $Execute->BusquedaJSON($variable);
+        // var_dump($buscado);
+        // die();
+
+        return response()->json($buscado);
     }
 }

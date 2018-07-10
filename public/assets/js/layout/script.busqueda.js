@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   var set = {
     sumit: $('#sumit-search'),
-    content: $('#show-busqueda'),
+    content: $('.content-busqueda'),
     input: $('#input-search'),
     loading: $('.animation')
   }
@@ -17,7 +17,7 @@ $(document).ready(function () {
       type: "post",
       url: "/Foro.CoBin/BusquedaMaster",
       data: {
-        input : 'assa'
+        input : val
       },
       dataType: "json",
       headers: {
@@ -27,14 +27,20 @@ $(document).ready(function () {
         // set.content.html(val)
         set.loading.addClass(Class.loading)
       },
-      success: function (response) {
-        // alert('as');
-        // set.loading.removeClass(Class.loading)
-        console.log(response)
+      complete:function () {
+        set.loading.removeClass(Class.loading)
       },
-      // error:function (error) {
-      //   alert(error.responseText)
-      // }
+      success: function (response) {
+          console.log(response)
+          // console.log(response['pregunta'].length)
+          // for (let i = 0; i < response.length; i++) {
+
+          // }
+          // set.content.html(response['busqueda']['pregunta'].titulo_pre)
+      },
+      error:function (error) {
+        alert(error.responseText)
+      }
     })
   })
 })
