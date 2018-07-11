@@ -10,6 +10,10 @@ body{
 .row{
   margin:0;
 }
+.btn:focus{
+  outline: none;
+      box-shadow: none!important;
+}
 a,a:hover{
   text-decoration: none;
   color:inherit;

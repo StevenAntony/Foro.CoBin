@@ -1,0 +1,69 @@
+#home .cover-home{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#home .cover-home .col-left .lema-web{
+  font-size: 2rem;
+  color: #e6e6e6;
+  text-transform: uppercase;
+}
+#home .cover-home .user-score .avatar{
+  margin: 30px auto;
+}
+#home .cover-home .user-score .data-user{
+  background: #e6e6e6;
+  height: 100%;
+}
+#home .cover-home .user-score .data-user .user-name {
+  font-size: 1.2rem;
+  padding-top:20px;
+  font-family: 'calibri';
+  /* font-weight: 700; */
+  text-align: center;
+}
+
+#home .cover-home .user-score .data-user .puntaje-user{
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  font-family: 'calibri';
+}
+.location-route{
+  background: #ffffff;
+}
+.location-route .d-flex{
+  height: 50px;
+}
+.tags-route{
+  position: relative;
+  padding: 5px 20px;
+  color: #ffffff;
+  background:#0ab2fb;
+  margin-left: 20px;
+  font-family: 'calibri light';
+  text-transform: uppercase;
+}
+.tags-route::before{
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #0ab2fb;
+  position: absolute;
+  right: -0.65em;
+  top: 5px;
+  transform: rotate(45deg);
+  border-radius: 0 .25em 0 0;
+}
+.tags-route::after{
+  content: '';
+  width: .5em;
+  height: .5em;
+  background: #fff;
+  border-radius: 4.167em;
+  position: absolute;
+  top: .667em;
+  right: .083em;
+  border: 1px solid #bbdefb;
+}

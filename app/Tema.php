@@ -13,4 +13,8 @@ class Tema extends Model
     {
         return $this->belongsTo('App\Categoria');
     }
+    public function pregunta()
+    {
+        return $this->hasMany('App\Pregunta');
+    }
 }

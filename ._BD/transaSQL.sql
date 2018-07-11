@@ -148,3 +148,7 @@ END
 --> REALIZAR BUSQUEDAS EN EL WELCOME
 
 select * from pregunta pg inner join respuesta rp on pg.codigo_pre = rp.codigo_pre where pg.titulo_pre like 'cre%'
+
+--> Mayor Puntaje
+
+  select

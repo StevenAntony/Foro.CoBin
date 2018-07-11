@@ -16,4 +16,16 @@ class Pregunta extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+    public function tema()
+    {
+        return $this->belongsTo('App\Tema');
+    }
+    public function respuesta()
+    {
+        return $this->hasMany('App\Respuesta');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

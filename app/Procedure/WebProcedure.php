@@ -31,6 +31,8 @@ class WebProcedure
         $Result = $BD->where('codigo_categ','like','HR%')
                                         ->get();
         $List['Herramientas'] = $Result;
+        // var_dump($List['Lenguajes']);
+        // die();
 
         return $List;
     }
@@ -49,6 +51,10 @@ class WebProcedure
             'data' => [],
             'contRPT' => []
         ];
+        // $Categoria = [
+        //     'data' => '',
+        //     'contPre'
+        // ];
         // SELECT p.codigo_pre , count(r.codigo_resp) as cantidad from pregunta p inner join respuesta r on p.codigo_pre = r.codigo_pre where p.codigo_pre = 'P02B'
 
 
@@ -96,5 +102,31 @@ class WebProcedure
         // die();
 
         return $List;
+    }
+
+    public function UserMostScore()
+    {
+        $BD = new User;
+        $UserScore = [
+          'usuario'=>[],
+          'puntaje'=>[]
+        ];
+
+        $usuarios = $BD->join('detalleuser','detalleuser.user_id','=','id')->get();
+        // var_dump(count($usuarios));
+        // die();
+
+        for ($i=0; $i <count($usuarios) ; $i++) {
+            $puntajeTotal = 0;
+            $Respustas = $BD->join('respuesta','respuesta.user_id','=','users.id')->where('users.id','=',$usuarios[$i]->id)->get();
+            for ($j=0; $j <count($Respustas) ; $j++) {
+
+                $puntajeTotal = $puntajeTotal + $Respustas[$j]->valoracion_resp;
+            }
+            $UserScore['usuario'][$i] = $usuarios[$i];
+            $UserScore['puntaje'][$i] = $puntajeTotal;
+        }
+
+        return $UserScore;
     }
 }
