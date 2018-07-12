@@ -9,48 +9,69 @@
   margin-left: 10px;
 }
 
-#welcome .col-right .question-prominent .list-question {
+/**HOME ESPECIAL**/
+
+#home .sidebar-right .question-prominent .list-question {
   height: 300px;
   overflow: auto;
   /* border: 1px solid #aaaaaa; */
 }
 
-#welcome .col-right .question-prominent .title-question {
+#home .sidebar-right .question-prominent .title-question {
   padding: 10px 0;
 }
 
-#welcome .col-right .question-prominent .title-question .small{
+#home .sidebar-right .question-prominent .title-question .small {
     font-weight: 700;
     font-size: 0.8rem;
     margin-left: 10px;
 }
 
-#welcome .col-right .question-prominent .question-item{
+#home .sidebar-right .question-prominent .question-item {
   /* height: 70px; */
   background-color: #ffffff;
   padding: 10px 10px;
   border-bottom: 1px solid #d4d4d4;
 }
-#welcome .col-right .question-prominent .question-item .title-question-item{
+#home .sidebar-right .question-prominent .question-item .title-question-item {
   padding: 10px 10px;
   overflow: hidden;
   width: 210px;
 }
-#welcome .col-right .question-prominent .question-item .avatar-user{
+#home .sidebar-right .question-prominent .list-question::-webkit-scrollbar {
+  width: 5px;
+}
+
+#home .sidebar-right .question-prominent .list-question::-webkit-scrollbar-track {
+  background-color: #e2e2e2b3;
+}
+
+#home .sidebar-right .question-prominent .list-question::-webkit-scrollbar-thumb {
+  background-color: #4f5467;
+}
+
+/* #home .sidebar-right .question-prominent .list-question::-webkit-scrollbar-button {
+  background-color: #40465a;
+} */
+
+#home .sidebar-right .question-prominent .list-question::-webkit-scrollbar-corner {
+  background-color: #fff;
+}
+#home .sidebar-right .question-prominent .question-item .avatar-user {
   padding: 10px 5px;
 }
-#welcome .col-right .question-prominent .question-item .title-question-bd,
+#home .sidebar-right .question-prominent .question-item .title-question-bd,
 .user-question {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: 700;
 }
-#welcome .col-right .question-prominent .question-item .time-date-question{
+#home .sidebar-right .question-prominent .question-item .time-date-question {
     padding: 10px 0px;
     overflow: hidden;
 }
-#welcome .col-right .question-prominent .question-item .time-date{
+#home .sidebar-right .question-prominent .question-item .time-date {
     overflow: hidden;
     color: #a5a5a5;
     text-overflow: ellipsis;

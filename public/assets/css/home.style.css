@@ -2,19 +2,20 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height:450px;
 }
 
 #home .cover-home .col-left .lema-web{
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #e6e6e6;
   text-transform: uppercase;
 }
 #home .cover-home .user-score .avatar{
-  margin: 30px auto;
+  margin: 20px auto;
 }
 #home .cover-home .user-score .data-user{
   background: #e6e6e6;
-  height: 100%;
+  /* height:; */
 }
 #home .cover-home .user-score .data-user .user-name {
   font-size: 1.2rem;
@@ -66,4 +67,85 @@
   top: .667em;
   right: .083em;
   border: 1px solid #bbdefb;
+}
+
+#home .col-left .icon-theme-detail{
+  position: absolute;
+  cursor: pointer;
+}
+#home .col-left .avatar-theme {
+  text-align: center;
+  padding-top: 40px;
+}
+#home .caract{
+  top:5px;
+  left: 5px;
+}
+#home .more{
+  top:5px;
+  right: 5px;
+}
+#home .col-left .titulo-theme h1{
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 700;
+  padding: 10px 0px;
+  font-family: 'calibri';
+  text-transform: uppercase;
+  text-align: center;
+}
+#home .col-left .data-theme{
+  padding: 10px 20px;
+}
+#home .col-left .padding-count-question{
+  margin-left: 10px;
+  color: #ffffff;
+  background: #556080;
+  border-radius: 50%;
+  padding: 6px 11px;
+}
+#home .col-left .option-more{
+  width: 130px;
+  box-shadow: 0 1px 2px 0 #556080;
+  background: #ffffff;
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  transition: 0.2s;
+  /* display: none; */
+  transform: scale(0)
+}
+#home .col-left .option-more .more-item a{
+  padding:3px 15px;
+}
+#home .col-left .option-more .more-item a:hover{
+  background: #f5f8fa;
+}
+
+#home .sidebar-right .btn-preguntar-all{
+  width: 100%;
+  text-transform: uppercase;
+}
+@media (max-width:767px){
+  #home .sidebar-right{
+    display: none;
+  }
+}
+
+@media (max-width:580px){
+  #home .flex-cover,.cover-home{
+    height: 300px!important;
+  }
+  @media (min-width:470px) {
+    .col-xs-6{
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #home .cover-home .user-outstanding{
+    display: none;
+  }
 }

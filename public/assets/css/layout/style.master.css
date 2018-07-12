@@ -221,7 +221,7 @@
     display: block;
   }
 }
-@media (max-width: 465px) {
+@media (max-width: 480px) {
   .head-center .menu-burger {
     margin-right: 15px;
   }

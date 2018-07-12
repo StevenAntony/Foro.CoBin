@@ -61,7 +61,7 @@
                <div class="container">
                  <div class="content">
                    <div class="d-flex layer ai-center jc-spaceBetween">
-                     <div class="col-sm-3" style="position: relative">
+                     <div class="col" style="position: relative">
                       <div class="box">
                         <div class="col-left">
                           {{-- <span class="title">Foro</span> --}}
@@ -167,6 +167,7 @@
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.master.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.busqueda.js')}}"></script>
+        <script src="{{asset('assets/js/script.more.js')}}"></script>
         @yield('script')
     </body>
 </html>

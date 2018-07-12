@@ -129,4 +129,36 @@ class WebProcedure
 
         return $UserScore;
     }
+
+    public function ListarCategDeta()
+    {
+        $List = [
+            'datosC' => [],
+            'tema' => [
+                'datosT' => [],
+                'contPreg' => []
+            ]
+
+        ];
+        $DB = new Categoria;
+        $Categorias = $DB->get();
+        for ($i=0; $i <count($Categorias) ; $i++) {
+            $List[$i]['datosC'] = json_decode($Categorias[$i]);
+            $Result = $DB->join('tema','categoria.codigo_categ','tema.codigo_categ')
+                            ->where('categoria.codigo_categ','=',$Categorias[$i]->codigo_categ)->get();
+            if (count($Result)>0) {
+                for ($j=0; $j <count($Result) ; $j++) {
+                    $List[$i]['tema'][$j]['datosT'] = json_decode($Result[$j]);
+                    $contPre = $DB->join('tema', 'categoria.codigo_categ', 'tema.codigo_categ')
+                            ->join('pregunta', 'tema.id_tem', '=', 'pregunta.id_tem')
+                            ->where('tema.id_tem', '=', $Result[$j]->id_tem)->get()->count();
+                    $List[$i]['tema'][$j]['contPreg'] = $contPre;
+                }
+            }else if(count($Result) == 0){
+                $List[$i]['tema'] = null;
+            }
+        }
+        //  dd($List);
+        return $List;
+    }
 }

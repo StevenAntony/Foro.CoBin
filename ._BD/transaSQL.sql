@@ -22,8 +22,13 @@ Create DataBase foroBinario
   values ('SOLN07SO','Linux');
   insert into categoria (codigo_categ,nombre_categ)
   values ('LPC+08OO','C++');
-  INSERT INTO categoria(codigo_categ, nombre_categ) VALUES ('HR01ID','Visual Code');
+  INSERT INTO categoria(codigo_categ, nombre_categ)
+  VALUES ('HR01ID','Visual Code');
 --      TEMA
+  insert into tema (codigo_categ,nombre_tem)
+  values ('LPC+08OO','Structura');
+  insert into tema (codigo_categ,nombre_tem)
+  values ('HR01ID','Extension Mysql');
   insert into tema (codigo_categ,nombre_tem)
   values ('LPJS01OE','Array');
   insert into tema (codigo_categ,nombre_tem)

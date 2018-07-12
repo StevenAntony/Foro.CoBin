@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Procedure\WebProcedure;
 use App\Categoria;
+use App\Tema;
 use JavaScript;
 use Response;
 // use App\Categoria;
@@ -33,13 +34,14 @@ class webController extends Controller
             }
         }
 
+        $TemasDetalle = $Execute->ListarCategDeta();
         $Result = $Execute->ListarCategoria();
-        // $obj =new Categoria;
-        // $AllCategoria = $obj->get();
+        // dd($UltimoPregunta);
+        // dd($TemasDetalle);
         return view('home')->with('categoria',$Result)
                               ->with('ruta',$Ruta)
                               ->with('score',$userData)
-                            //   ->with('all',$AllCategoria)
+                              ->with('temas',$TemasDetalle)
                               ->with('ultimaP', $UltimoPregunta);
     }
 
