@@ -4,6 +4,7 @@ namespace App\Procedure;
 use Illuminate\Support\Facades\DB;
 use App\Categoria;
 use App\User;
+use App\Tema;
 use App\Pregunta;
 use App\Respuesta;
 
@@ -37,10 +38,29 @@ class WebProcedure
         return $List;
     }
 
+    public function SearchThemeInCategory($Category,$theme)
+    {
+        $BD = new Categoria;
+
+        $Result = $BD->join('tema', 'categoria.codigo_categ','=', 'tema.codigo_categ')->where('categoria.nombre_categ', '=', $Category)
+            ->where('tema.nombre_tem', '=', $theme)
+            ->get()->count();
+
+
+        return $Result;
+    }
+
     public function BuscarCategoria($obj)
     {
         $BD = new Categoria;
         $Result = $BD->where('nombre_categ','=',$obj)->get();
+        return $Result;
+    }
+
+    public function BuscarTema($obj)
+    {
+        $BD = new Tema;
+        $Result = $BD->where('nombre_tem','=',$obj)->get();
         return $Result;
     }
 

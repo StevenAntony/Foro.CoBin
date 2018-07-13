@@ -73,4 +73,24 @@ class webController extends Controller
 
         return response()->json($buscado);
     }
+
+    public function TemaIndex($area, $categoria,$tema)
+    {
+        $Execute = new WebProcedure;
+        $exist = $Execute->SearchThemeInCategory($categoria, $tema);
+
+        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0) && (count($Execute->BuscarTema($tema)) > 0) && $exist==1 ) {
+            $Ruta = [
+                'nombre' => ['Inicio', $area , $categoria,'Tema',$tema],
+                'direct' => ['foro.index', 'foro.categoria', 'foro.categoria', 'foro.categoria.tema', 'foro.categoria.tema'],
+            ];
+
+            $Result = $Execute->ListarCategoria();
+            return view('tema/tema')->with('categoria', $Result)
+                                                ->with('ruta', $Ruta);
+        }else{
+            return 'no se encontro la pagina';
+        }
+    }
+
 }

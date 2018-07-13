@@ -17,6 +17,7 @@
 
 Route::get('/Foro.CoBin','webController@Index')->name('foro.index');
 Route::get('/Foro.CoBin/{area}/{categoria}', 'webController@CategoriaIndex')->name('foro.categoria');
+Route::get('/Foro.CoBin/{area}/{categoria}/tema/{temaDetalle}', 'webController@TemaIndex')->name('foro.categoria.tema');
 
 /**
  * Web Rutas POST

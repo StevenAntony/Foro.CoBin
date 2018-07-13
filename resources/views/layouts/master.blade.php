@@ -20,11 +20,13 @@
         <link rel="stylesheet" href="{{asset('assets/css/layout/style.master.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/welcome.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/home.style.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/redes.style.css')}}">
         @yield('style')
     </head>
     <body>
 
         <div class="wrapper">
+          @include('redesSocial.segir')
           <!--cabecera general-->
           <header id="header">
             <div class="box">
@@ -44,7 +46,7 @@
                       <div class="">
                         <div class="box">
                           <div class="col-right d-flex jc-flexEnd ai-center" style="height: 70px;">
-                            <div class="ini-session"><button type="button" class="btn btn-default btn-sesion"><img src="{{asset("assets/img/icons/svg/057-login-4.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px"> Iniciar Sesion</button></div>
+                            <div class="ini-session"><button type="button" class="btn btn-default btn-sesion"><img src="{{asset("assets/img/icons/svg/112-login-1.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px"> Iniciar Sesion</button></div>
                             <div class="register-has"><button type="button" class="btn btn-default btn-register">Registrar</button></div>
                             {{-- <a href="#" class="network"><span class="ti-facebook"></span></a>
                             <a href="#" class="network"><span class="ti-twitter-alt"></span></a>
@@ -79,8 +81,8 @@
                        <div class="box">
                          <div class="col-right">
                            <div class="menu-burger">
-                             <img class="icon-burger show-icon-burger" state='true' src="{{asset("assets/img/icons/svg/067-menu-3.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px">
-                             <img class="icon-burger hidden-icon-burger" state='false' src="{{asset("assets/img/icons/svg/082-cancelar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px">
+                             <img class="icon-burger show-icon-burger" state='true' src="{{asset("assets/img/icons/svg/124-menu-2.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px">
+                             <img class="icon-burger hidden-icon-burger" state='false' src="{{asset("assets/img/icons/svg/168-cancelar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px">
                              {{-- <button type="button" class="btn btn-burger"><i class="ti-view-list"></i></button> --}}
                            </div>
                           <div id="content-burger" active="false">

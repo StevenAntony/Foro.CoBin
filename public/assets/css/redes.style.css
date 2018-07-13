@@ -1,0 +1,22 @@
+.redes-social-flot{
+  position: fixed;
+  z-index: 200;
+  background: #ffffff;
+  top: calc(50vh - 80px);
+  transform: translateX(-50px);
+}
+.handle-red{
+  cursor: pointer;
+  position: fixed;
+  z-index: 200;
+  background: #15bdb1;
+  left: 40px;
+  top: calc(50vh - 80px);
+  padding: 5px 5px;
+  transition: 0.3s;
+  transform: translateX(-40px);
+  /* transform: rotatey(0deg); */
+}
+.img-handle-red{
+  transform: rotatey(0deg);
+}

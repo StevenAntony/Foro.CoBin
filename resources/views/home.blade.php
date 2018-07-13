@@ -28,13 +28,13 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 user-outstanding">
                   <div class="user-score d-flex jc-center">
                     <div class="card" style="width: 200px;">
-                      <div class="avatar"><img src="{{asset('assets/img/icons/svg/003-usuario-3.svg')}}" alt="" srcset="" width="60px" height="60px"></div>
+                      <div class="avatar"><img src="{{asset('assets/img/icons/svg/118-usuario.svg')}}" alt="" srcset="" width="60px" height="60px"></div>
                       <div class="data-user">
                         <h1 class="user-name">{{$score['datos']->name}}</h1>
                         @if ($score['datos']->estado == 'activo')
-                          <img style="position: absolute;top:10px;right: 10px;" src="{{asset('assets/img/icons/svg/077-exito.svg')}}" alt="" srcset="" width="20px" height="20px">
+                          <img style="position: absolute;top:10px;right: 10px;border-radius: 50%;" src="{{asset('assets/img/icons/svg/013-cuadrado-de-forma-redondeada-negra.svg')}}" alt="" srcset="" width="15px" height="15px">
                         @else
-                          <img style="position: absolute;top:10px;right: 10px;" src="{{asset('assets/img/icons/svg/135-error.svg')}}" alt="" srcset="" width="20px" height="20px">
+                          <img style="position: absolute;top:10px;right: 10px;border-radius: 50%;" src="{{asset('assets/img/icons/svg/010-forma-cuadrada-sombra-1.svg')}}" alt="" srcset="" width="15px" height="15px">
                         @endif
                         <p class="puntaje-user">{{$score['puntaj']}} .puntos</p>
                       </div>
@@ -59,9 +59,9 @@
                       @for ($j = 0; $j < count($temas[$i]['tema']); $j++)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="padding:10px;">
                           <div class="card">
-                            <div class="caract icon-theme-detail"><img class="img-caract" state='true' src="{{asset("assets/img/icons/svg/004-estrella-1.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></div>
-                            <div class="more more-handle icon-theme-detail" state ='desactive'><img class="img-more" state='true' src="{{asset("assets/img/icons/svg/108-menu.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></div>
-                            <div class="avatar-theme"><img class="img-theme" state='true' src="{{asset("assets/img/icons/svg/026-espacio-de-trabajo.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="40px" height="40px"></div>
+                            <div class="caract icon-theme-detail"><img class="img-caract" state='true' src="{{asset("assets/img/icons/svg/024-nuevo.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="30px" height="30px"></div>
+                            <div class="more more-handle icon-theme-detail" state ='desactive'><img class="img-more" state='true' src="{{asset("assets/img/icons/svg/048-menu-5.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></div>
+                            <div class="avatar-theme"><img class="img-theme" state='true' src="{{asset("assets/img/icons/svg/079-escritorio.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="40px" height="40px"></div>
                             <div class="titulo-theme"><h1>{{$temas[$i]['tema'][$j]['datosT']->nombre_tem}}</h1></div>
                             <div class="data-theme">
                               <div class="date-creation"><span class="small">Fecha :</span>
@@ -83,9 +83,9 @@
                             <div class="option-more">
                               <nav class="box">
                                 <ul class="content-more">
-                                  <li class="more-item"><a style="display:block" href="http://"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/042-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
-                                  <li class="more-item"><a style="display:block" href="http://"><span class="small"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/009-levantar-la-mano-para-preguntar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"> </span> Preguntar</span></a></li>
-                                  <li class="more-item"><a style="display:block" href="http://"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/039-notificacion.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Notificar</span></a></li>
+                                  <li class="more-item"><a style="display:block" href="{{route('foro.categoria.tema',['Lenguajes',$temas[$i]['datosC']->nombre_categ,$temas[$i]['tema'][$j]['datosT']->nombre_tem])}}"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/097-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
+                                  <li class="more-item"><a style="display:block" href="http://"><span class="small"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/199-levantar-la-mano-para-preguntar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"> </span> Preguntar</span></a></li>
+                                  <li class="more-item"><a style="display:block" href="http://"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/094-notificacion.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Notificar</span></a></li>
                                   <li class="more-item"><a style="display:block" href="http://"><span class="small"></span></a></li>
                                 </ul>
                               </nav>
@@ -101,14 +101,14 @@
                 <div class="box">
                   <div class="content" style="padding:10px;"  >
                     <div class="button-type"><button type="button" class="btn btn-default btn-preguntar-all btn-danger"><span class="small">Quiero Preguntar</span></button></div>
-                    <div class="question-prominent" style="margin-top:40px;">
-                      {{-- <div class="title-question text-center btn-secondary"><img src="{{asset("assets/img/icons/svg/078-internet.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="x">ULTIMAS PREGUNTAS</span></div> --}}
+                    <div class="question-prominent" style="margin-top:20px;">
+                        <div class="title-question text-center"><img src="{{asset("assets/img/icons/svg/006-rotacion.svg")}}" alt="" srcset="" width="25px" height="25px"> <span class="small" style="font-weight: 700;"> Ultimas Preguntas</span></div>
                         <div class="list-question">
                             <ul class="box-question">
                                 @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
                                     <li class="row">
                                         <a href="#" class="question-item" style="width:100%; display:flex;">
-                                            <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/003-usuario-3.svg")}}" alt="" srcset="" width="40px" height="40px"></div>
+                                            <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/118-usuario.svg")}}" alt="" srcset="" width="40px" height="40px"></div>
                                             <div class="title-question-item">
                                                 <h6 class="title-question-bd">{{$ultimaP['data'][$i]->titulo_pre}}</h6>
                                                 <h6 class="small user-question" style="color:#9aa0ac"><i class="ti-hand-point-right"></i> {{$ultimaP['data'][$i]->name}}</h6>
@@ -138,6 +138,6 @@
 
 @section('script')
     <script>
-      console.log(@json($temas));
+      // console.log(@json($temas));
     </script>
 @endsection
