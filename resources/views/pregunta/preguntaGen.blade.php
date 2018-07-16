@@ -59,7 +59,7 @@
     <script>
         $(document).ready(function () {
 
-            var Categoria = @json($selCat);
+            var Categoria = JSON.parse(@json($selCat));
             var Tema = @json($selTem);
             // alert(Categoria.length)
             var opction = ""
