@@ -34,4 +34,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Respuesta');
     }
+    public function detalle()
+    {
+        return $this->hasOne('App\DetalleUser', 'user_id');
+    }
 }

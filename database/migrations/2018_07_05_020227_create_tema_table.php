@@ -14,11 +14,12 @@ class CreateTemaTable extends Migration
     public function up()
     {
         Schema::create('tema', function (Blueprint $table) {
-            $table->increments('id_tem');
-            $table->char('codigo_categ', 10);
+            // $table->increments('id_tem');
+            $table->char('codigo_tem', 10)->primary();
+            $table->char('codigo_cat', 5);
             $table->string('nombre_tem', 50);
-
-            $table->foreign('codigo_categ')->references('codigo_categ')->on('categoria');
+            $table->string('estado_tem',10);
+            $table->foreign('codigo_cat')->references('codigo_cat')->on('categoria');
             $table->timestamps();
         });
     }

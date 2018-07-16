@@ -46,11 +46,26 @@
                       <div class="">
                         <div class="box">
                           <div class="col-right d-flex jc-flexEnd ai-center" style="height: 70px;">
-                            <div class="ini-session"><button type="button" class="btn btn-default btn-sesion"><img src="{{asset("assets/img/icons/svg/112-login-1.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px"> Iniciar Sesion</button></div>
-                            <div class="register-has"><button type="button" class="btn btn-default btn-register">Registrar</button></div>
-                            {{-- <a href="#" class="network"><span class="ti-facebook"></span></a>
-                            <a href="#" class="network"><span class="ti-twitter-alt"></span></a>
-                            <a href="#" class="network"><span class="ti-instagram"></span></a> --}}
+
+                            @if (Auth::check())
+                              <div class="dropdown">
+                                <button class="btn btn-default btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  <span class="small">MI CUENTA</span>
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-right: 20px;">
+                                  <li><a href="#" style="display:flex;overflow: hidden;text-overflow: ellipsis;padding: 5px 10px;" title="{{Auth::user()->name}}"><img src="{{asset("assets/img/icons/svg/".Auth::user()->detalle->avatar_dus.".svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px"><span class="small" style="width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{Auth::user()->name}}</span></a></li>
+                                  <li><a href="#" style="display:flex;padding: 5px 10px;"><span class="small">Configuracion</span></a></li>
+                                  <li><a href="#" style="display:flex;padding: 5px 10px;"><span class="small">Soporte</span></a></li>
+                                  <hr style="margin:0;">
+                                  {{-- {{route('cerrar')}} --}}
+                                  <li><a href="{{route('cerrar')}}" style="display:flex;padding: 5px 10px;"><span class="small">salir</span></a></li>
+                                </ul>
+                              </div>
+                            @else
+                            <div class="ini-session"><button type="button" data-toggle="modal" data-target=".bs-example-login" class="btn btn-default btn-sesion"><img src="{{asset("assets/img/icons/svg/112-login-1.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px"> Iniciar Sesion</button></div>
+                            <div class="register-has"><button  data-toggle="modal" data-target=".bs-example-register" type="button" class="btn btn-default btn-register">Registrar</button></div>
+                            @endif
                           </div>
                         </div>
                       </div>
@@ -66,12 +81,10 @@
                      <div class="col" style="position: relative">
                       <div class="box">
                         <div class="col-left">
-                          {{-- <span class="title">Foro</span> --}}
                           <div class="form-search-group">
                             <input type="search" autocomplete="true" name="" id="input-search" placeholder="Buscar....">
                             <button type="button" id="sumit-search" class="btn-search btn btn-default">
                               <i class="ti-search"></i>
-                              {{-- <img src="{{asset("assets/img/icons/svg/070-busqueda.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"> --}}
                             </button>
                           </div>
                         </div>
@@ -91,28 +104,28 @@
                                 <li class="option-item" state='hidden'><label class="d-flex jc-spaceBetween">Lenguajes <i class="ti-angle-down"></i></label>
                                   <ul class="sub-options">
                                       @foreach ($categoria['Lenguajes'] as $c)
-                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Lenguajes',$c->nombre_categ])}}">{{$c->nombre_categ}}</a></li>
+                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Lenguajes',$c->nombre_cat])}}">{{$c->nombre_cat}}</a></li>
                                       @endforeach
                                   </ul>
                                 </li>
                                 <li class="option-item" state='hidden'><label class="d-flex jc-spaceBetween">Sistema Operativo <i class="ti-angle-down"></i></label>
                                   <ul class="sub-options">
                                       @foreach ($categoria['SistOper'] as $c)
-                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Sistema Operativo',$c->nombre_categ])}}">{{$c->nombre_categ}}</a></li>
+                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Sistema Operativo',$c->nombre_cat])}}">{{$c->nombre_cat}}</a></li>
                                       @endforeach
                                   </ul>
                                 </li>
                                 <li class="option-item" state='hidden'><label class="d-flex jc-spaceBetween">Base Datos <i class="ti-angle-down"></i></label>
                                   <ul class="sub-options">
                                       @foreach ($categoria['BaseDatos'] as $c)
-                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Base Datos',$c->nombre_categ])}}">{{$c->nombre_categ}}</a></li>
+                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Base Datos',$c->nombre_cat])}}">{{$c->nombre_cat}}</a></li>
                                       @endforeach
                                   </ul>
                                 </li>
                                 <li class="option-item" state='hidden'><label class="d-flex jc-spaceBetween">Herramientas <i class="ti-angle-down"></i></label>
                                   <ul class="sub-options">
                                       @foreach ($categoria['Herramientas'] as $c)
-                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Herramientas',$c->nombre_categ])}}">{{$c->nombre_categ}}</a></li>
+                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Herramientas',$c->nombre_cat])}}">{{$c->nombre_cat}}</a></li>
                                       @endforeach
                                   </ul>
                                 </li>
@@ -126,36 +139,6 @@
                  </div>
                </div>
               </div>
-              <!--==============================-->
-              {{-- <div class="head-bottom">
-                <div class="container">
-                  <div class="content">
-                    <div class="row  jc-spaceBetween ai-center">
-                      <div class="col-sm-6">
-                        @for ($i = 0; $i < count($ruta['nombre']) ; $i++)
-                          @if ($ruta['direct'][$i] == 'foro.categoria')
-                            @if (($i%2 == 0))
-                              <span><a href="{{route($ruta['direct'][$i],[$ruta['nombre'][$i-1],$ruta['nombre'][$i]])}}">{{$ruta['nombre'][$i]}}</a> / </span>
-                            @else
-                              <span style="color:#9ea8ac">{{$ruta['nombre'][$i]}} / </span>
-                            @endif
-                          @else
-                            <span><a href="{{route($ruta['direct'][$i])}}">{{$ruta['nombre'][$i]}}</a> / </span>
-                          @endif
-                        @endfor
-                      </div>
-                      <div class="">
-                        <div class="col-right">
-                          <div class="form-search-group">
-                            <input type="search" autocomplete="true" name="" id="input-search" placeholder="Buscar....">
-                            <button type="button" id="sumit-search" class="btn-search btn btn-default"><img src="{{asset("assets/img/icons/svg/070-busqueda.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
             </div>
           </header>
 
@@ -164,12 +147,54 @@
             @yield('content')
           </div>
         </div>
-
+        @if (!Auth::check())
+        <!-- Small modal -->
+        <div class="modal fade bs-example-login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title small" id="gridSystemModalLabel">{{ __('INICIAR SESION') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                @include('auth.login')
+              </div>
+            </div>
+          </div>
+        </div>
+                <!-- Small modal -->
+        <div class="modal fade bs-example-register" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title small" id="gridSystemModalLabel">{{ __('REGISTRAR CUENTA') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                @include('auth.register')
+              </div>
+            </div>
+          </div>
+        </div>
+        @endif
         <!-- Bootstrap -->
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.master.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.busqueda.js')}}"></script>
         <script src="{{asset('assets/js/script.more.js')}}"></script>
+        <script>
+          // $(document).ready(function () {
+          //   $.ajax({
+          //     type: "GET",
+          //     url: "Foro.CoBin/CerrarSesion",
+          //     data: "data",
+          //     dataType: "dataType",
+          //     success: function (response) {
+
+          //     }
+          //   });
+          // });
+        </script>
         @yield('script')
     </body>
 </html>

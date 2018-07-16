@@ -20,16 +20,16 @@ class WebProcedure
           'Herramientas' => []
         ];
 
-        $Result = $BD->where('codigo_categ','like','L%')
+        $Result = $BD->where('codigo_cat','like','L%')
                                         ->get();
         $List['Lenguajes'] = $Result;
-        $Result = $BD->where('codigo_categ','like','BD%')
+        $Result = $BD->where('codigo_cat','like','B%')
                                         ->get();
         $List['BaseDatos'] = $Result;
-        $Result = $BD->where('codigo_categ','like','SO%')
+        $Result = $BD->where('codigo_cat','like','S%')
                                         ->get();
         $List['SistOper'] = $Result;
-        $Result = $BD->where('codigo_categ','like','HR%')
+        $Result = $BD->where('codigo_cat','like','H%')
                                         ->get();
         $List['Herramientas'] = $Result;
         // var_dump($List['Lenguajes']);
@@ -42,7 +42,7 @@ class WebProcedure
     {
         $BD = new Categoria;
 
-        $Result = $BD->join('tema', 'categoria.codigo_categ','=', 'tema.codigo_categ')->where('categoria.nombre_categ', '=', $Category)
+        $Result = $BD->join('tema', 'categoria.codigo_cat','=', 'tema.codigo_cat')->where('categoria.nombre_cat', '=', $Category)
             ->where('tema.nombre_tem', '=', $theme)
             ->get()->count();
 
@@ -53,7 +53,7 @@ class WebProcedure
     public function BuscarCategoria($obj)
     {
         $BD = new Categoria;
-        $Result = $BD->where('nombre_categ','=',$obj)->get();
+        $Result = $BD->where('nombre_cat','=',$obj)->get();
         return $Result;
     }
 
@@ -80,10 +80,10 @@ class WebProcedure
 
         // select('pg.codigo_pre', 'u.name', 'pg.titulo_pre', 'pg.fecha_pre', 'pg.hora_pre', 'ct.nombre_categ')
         $Result = $BD->join('pregunta','users.id','=','pregunta.user_id')
-                    ->join('tema','pregunta.id_tem','=', 'tema.id_tem')
-                    ->join('categoria','tema.codigo_categ','=','categoria.codigo_categ')
-                    ->select('pregunta.codigo_pre', 'users.name', 'pregunta.titulo_pre', 'pregunta.fecha_pre', 'pregunta.hora_pre', 'categoria.nombre_categ')
-                    ->orderByRaw('pregunta.fecha_pre DESC')
+                    ->join('tema','pregunta.codigo_tem','=', 'tema.codigo_tem')
+                    ->join('categoria','tema.codigo_cat','=','categoria.codigo_cat')
+                    ->select('pregunta.codigo_pre', 'users.name', 'pregunta.titulo_pre', 'pregunta.created_at', 'categoria.nombre_cat')
+                    ->orderByRaw('pregunta.created_at DESC')
                     ->get();
         $List['data'] = $Result;
 
@@ -127,58 +127,34 @@ class WebProcedure
     public function UserMostScore()
     {
         $BD = new User;
-        $UserScore = [
-          'usuario'=>[],
-          'puntaje'=>[]
-        ];
-
-        $usuarios = $BD->join('detalleuser','detalleuser.user_id','=','id')->get();
-        // var_dump(count($usuarios));
-        // die();
-
-        for ($i=0; $i <count($usuarios) ; $i++) {
-            $puntajeTotal = 0;
-            $Respustas = $BD->join('respuesta','respuesta.user_id','=','users.id')->where('users.id','=',$usuarios[$i]->id)->get();
-            for ($j=0; $j <count($Respustas) ; $j++) {
-
-                $puntajeTotal = $puntajeTotal + $Respustas[$j]->valoracion_resp;
-            }
-            $UserScore['usuario'][$i] = $usuarios[$i];
-            $UserScore['puntaje'][$i] = $puntajeTotal;
-        }
-
-        return $UserScore;
+        $usuarios = $BD->join('detalleuser','detalleuser.user_id','=','id')->orderByRaw('detalleuser.puntaje_dus DESC')
+        ->get();
+        return $usuarios;
     }
 
-    public function ListarCategDeta()
+    public function ListarNewTema()
     {
         $List = [
-            'datosC' => [],
-            'tema' => [
-                'datosT' => [],
-                'contPreg' => []
-            ]
-
+            'data' => [],
+            'contPre' => []
         ];
+
         $DB = new Categoria;
-        $Categorias = $DB->get();
-        for ($i=0; $i <count($Categorias) ; $i++) {
-            $List[$i]['datosC'] = json_decode($Categorias[$i]);
-            $Result = $DB->join('tema','categoria.codigo_categ','tema.codigo_categ')
-                            ->where('categoria.codigo_categ','=',$Categorias[$i]->codigo_categ)->get();
-            if (count($Result)>0) {
-                for ($j=0; $j <count($Result) ; $j++) {
-                    $List[$i]['tema'][$j]['datosT'] = json_decode($Result[$j]);
-                    $contPre = $DB->join('tema', 'categoria.codigo_categ', 'tema.codigo_categ')
-                            ->join('pregunta', 'tema.id_tem', '=', 'pregunta.id_tem')
-                            ->where('tema.id_tem', '=', $Result[$j]->id_tem)->get()->count();
-                    $List[$i]['tema'][$j]['contPreg'] = $contPre;
-                }
-            }else if(count($Result) == 0){
-                $List[$i]['tema'] = null;
-            }
+        $DBT = new Tema;
+        // select * from tema inner join categoria  on tema.codigo_cat = categoria.codigo_cat WHERE tema.estado_tem = 'nuevo'
+        $tema = $DB->join('tema', 'categoria.codigo_cat', '=', 'tema.codigo_cat')
+                        ->where('tema.estado_tem' ,'=' ,'nuevo')
+                        // ->select('tema.codigo_tem')
+                        ->get();
+        // dd($tema);
+        // select count(*) from pregunta p inner join tema t on p.codigo_tem = t.codigo_tem where t.codigo_tem = 'LJAR003'
+        foreach ($tema as $t) {
+            array_push($List['data'],$t);
+            $countPre = $DBT->join('pregunta','tema.codigo_tem','=','pregunta.codigo_tem')
+                            ->where('tema.codigo_tem','=',$t->codigo_tem)->count();
+            array_push($List['contPre'], $countPre);
         }
-        //  dd($List);
+        // dd($List);
         return $List;
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Procedure\WebProcedure;
 use App\Categoria;
 use App\Tema;
+use App\DetalleUser;
 use JavaScript;
 use Response;
 // use App\Categoria;
@@ -14,6 +16,22 @@ class webController extends Controller
 {
     public function Index()
     {
+        if (Auth::check()) {
+            // dd(Auth::user());
+
+            $objDU = new DetalleUser;
+            $exist = $objDU->where('user_id','=', Auth::user()->id)->count();
+            if ($exist == 0) {
+                $objDU->user_id = Auth::user()->id;
+                $objDU->avatar_dus = '067-jefe-1';
+                $objDU->ubicacion_dus = 'null';
+                $objDU->puntaje_dus = 0;
+                $objDU->nivel = 1;
+                $objDU->estado = 'activo';
+                $objDU->save();
+            }
+
+        }
         $Execute = new WebProcedure;
         $Ruta = [
             'nombre' => ['Inicio'],
@@ -21,26 +39,19 @@ class webController extends Controller
         ];
         $UltimoPregunta = $Execute->ListarUltimasPreguntas();
         $score = $Execute->UserMostScore();
-        $userData = [
-            'datos'=>'',
-            'puntaj'=>''
-        ];
-        $mayor=0;
-        for ($i=0; $i <count($score) ; $i++) {
-            if ($score['puntaje'][$i] > $mayor) {
-                $mayor = $score['puntaje'][$i];
-                $userData['datos'] = $score['usuario'][$i];
-                $userData['puntaj'] = $mayor;
-            }
+        // dd($score);
+        if (count($UltimoPregunta)==0) {
+            $UltimoPregunta = null;
         }
-
-        $TemasDetalle = $Execute->ListarCategDeta();
+        if (count($score)==0) {
+            $score = null;
+        }
+        // dd($score[0]);
+        $TemasDetalle = $Execute->ListarNewTema();
         $Result = $Execute->ListarCategoria();
-        // dd($UltimoPregunta);
-        // dd($TemasDetalle);
         return view('home')->with('categoria',$Result)
                               ->with('ruta',$Ruta)
-                              ->with('score',$userData)
+                              ->with('score',$score[0])
                               ->with('temas',$TemasDetalle)
                               ->with('ultimaP', $UltimoPregunta);
     }
@@ -93,4 +104,10 @@ class webController extends Controller
         }
     }
 
+
+    function cerrar(REQUEST $request) {
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('/Foro.CoBin');
+    }
 }

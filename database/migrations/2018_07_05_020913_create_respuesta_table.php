@@ -19,11 +19,9 @@ class CreateRespuestaTable extends Migration
             $table->char('codigo_pre', 10);
             $table->unsignedInteger('user_id');
             $table->text('descripcion_resp');
-            $table->text('descripcionCode__resp')->nullable();
-            $table->date('fecha_resp');
-            $table->time('hora_resp');
+            $table->text('descripcionCode_resp')->nullable();
             $table->string('estado_resp', 10);
-            $table->integer('valoracion_resp');
+            $table->double('valoracion_resp',4,2);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('codigo_pre')->references('codigo_pre')->on('pregunta');

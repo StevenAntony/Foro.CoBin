@@ -16,10 +16,11 @@ class CreateDetalleUserTable extends Migration
         Schema::create('detalleUser', function (Blueprint $table) {
             $table->increments('id_detUser');
             $table->unsignedInteger('user_id');
+            $table->string('avatar_dus');
+            $table->string('ubicacion_dus');
+            $table->double('puntaje_dus', 10, 2);
+            $table->integer('nivel');
             $table->string('estado',10);
-            $table->date('fecha_ing');
-            $table->string('avatar');
-
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

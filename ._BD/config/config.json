@@ -1,0 +1,8 @@
+{
+ "Auth" : {
+  "AuthenticatesUser": "Illuminate/Foundation/Auth",
+  "RedirectifAuthenticated": "App/Http/Middleware",
+  "RegisterController": "App/Http/Controllers/Auth",
+  "LoginController": "App/Http/Controllers/Auth"
+ }
+}

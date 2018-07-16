@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreguntaTable extends Migration
+class NotificacionTema extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,13 @@ class CreatePreguntaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pregunta', function (Blueprint $table) {
-            // $table->increments('id_pre');
-            $table->char('codigo_pre', 10)->primary();
+        Schema::create('notificacionTema', function (Blueprint $table) {
+            $table->increments('id_notTem');
             $table->char('codigo_tem', 10);
             $table->unsignedInteger('user_id');
-            $table->string('titulo_pre', 70);
-            $table->text('descripcion_pre');
-            $table->text('descripcionCode_pre')->nullable();
-            $table->string('estado_pre', 10);
-
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('codigo_tem')->references('codigo_tem')->on('tema');
+
             $table->timestamps();
         });
     }
@@ -36,6 +31,6 @@ class CreatePreguntaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pregunta');
+        Schema::dropIfExists('notificacionTema');
     }
 }

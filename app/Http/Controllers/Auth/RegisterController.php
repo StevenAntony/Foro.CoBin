@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/Foro.CoBin';
 
     /**
      * Create a new controller instance.
@@ -63,6 +64,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // DetalleUser::create([
+        //     'user_id' => $id,
+        //     'avatar_dus' => '067-jefe-1',
+        //     'ubicacion_dus' => ' ',
+        //     'puntaje_dus' => 0,
+        //     'nivel' => 1,
+        //     'estado' => 'activo',
+        // ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

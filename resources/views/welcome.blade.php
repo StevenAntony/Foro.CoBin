@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -97,90 +97,4 @@
         <script src="{{asset('js/app.js')}}"></script>
 
     </body>
-</html> --}}
-
-@extends('layouts.master')
-@section('style')
-    <style>
-        #welcome .row{
-            margin: 0;
-        }
-        #welcome .box-left{
-            padding: 0 50px;
-        }
-        #welcome .col-left{
-            background-color: #ffffff;
-            height: 200px;
-        }
-        #welcome .box-right{
-            padding-right: 50px;
-        }
-    </style>
-@endsection
-@section('content')
-    <div id="welcome">
-        <div class="box">
-            <div class="contenedor">
-                <div class="content">
-                    <div style="height: 100px"></div>
-                    <div class="d-flex jc-spaceBetween">
-                        <div class="col">
-                            <div class="box-left">
-                                <div class="col-left" id="show-busqueda">
-                                    <div class="loader"><div class="animation"></div></div>
-                                    <div class="content-busqueda">
-                                        {{-- <div class="d-flex col-12">
-                                            <div class="option-search-item col-12">
-                                                <div class="title-search d-flex jc-spaceBetween"><img src="{{asset("assets/img/icons/svg/048-capas.svg")}}" alt="" srcset="" width="35px" height="35px"><h1 class="small titulo-cuestion" style="">NO PUEDO CONECTAR</h1><small class="small date-cuestion text-muted-app">2018-08-09<br> 10:20:10</small></div>
-                                            </div>
-                                        </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="" style="width: 380px;">
-                            <div class="box-right">
-                                <div class="col-right">
-                                    <div class="login-user"><button type="button" class="btn jc-center d-flex btn-login btn-default btn-success"><img src="{{asset("assets/img/icons/svg/052-usuario-2.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="display:block; margin-top: 4px">INICIAR SESIÒN</span></button></div>
-                                    <br>
-                                    <div class="login-user"><button type="button" class="btn jc-center d-flex btn-login btn-default btn-primary"><img src="{{asset("assets/img/icons/svg/070-documento.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="display:block; margin-top: 4px">REGISTRAR</span></button></div>
-                                    <br>
-                                    <div class="question-prominent">
-                                        <div class="title-question text-center btn-secondary"><img src="{{asset("assets/img/icons/svg/078-internet.svg")}}" alt="" srcset="" width="25px" height="25px"><span class="small" style="x">ULTIMAS PREGUNTAS</span></div>
-                                        <div class="list-question">
-                                            <ul class="box-question">
-                                                @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
-                                                    <li class="row">
-                                                        <a href="#" class="question-item" style="width:100%; display:flex;">
-                                                            <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/005-estudiante.svg")}}" alt="" srcset="" width="40px" height="40px"></div>
-                                                            <div class="title-question-item">
-                                                                <h6 class="title-question-bd">{{$ultimaP['data'][$i]->titulo_pre}}</h6>
-                                                                <h6 class="small user-question" style="color:#9aa0ac"><i class="ti-hand-point-right"></i> {{$ultimaP['data'][$i]->name}}</h6>
-                                                            </div>
-                                                            <div class="time-date-question">
-                                                                <h6 class="small time-date">{{$ultimaP['data'][$i]->fecha_pre}}</h6>
-                                                                <h6 class="small time-date">{{$ultimaP['data'][$i]->hora_pre}}</h6>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                @endfor
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
-@section('script')
-    {{-- <script>
-        $(".group-search").click(function () {
-            alert("sa")
-          });
-    </script> --}}
-@endsection
+</html>
