@@ -10,7 +10,8 @@
             <div class="form-group row">
                 <label class="col-2 col-form-label">CATEGORIA : </label>
                 <div class="col-10">
-                    <select class="form-control" id="selCategory" name="selCategory">
+                    <button type="button" class="btn-primary btn btn-desing"></button>
+                    <select class="form-control " id="selCategory" name="selCategory">
 
                     </select>
                 </div>
@@ -60,7 +61,7 @@
         $(document).ready(function () {
 
             var Categoria = JSON.parse(@json($selCat));
-            var Tema = @json($selTem);
+            var Tema = JSON.parse(@json($selTem));
             // alert(Categoria.length)
             var opction = ""
             var opctTeme= ""
@@ -72,6 +73,7 @@
                     opctTeme = opctTeme + "<option>"+Tema[i].nombre_tem+"</option>"
                 }
             }
+            $('.btn-desing').html(Categoria[0].nombre_cat)
             $('#selCategory').html(opction)
             $('#selTheme').html(opctTeme)
             $('#selCategory').click(function () {
@@ -82,6 +84,7 @@
                        cod = Categoria[i].codigo_cat
                    }
                 }
+                $('.btn-desing').html(cal)
                 for (let i = 0; i < Tema.length; i++) {
                     if (Tema[i].codigo_cat == cod ) {
                         opctTeme = opctTeme + "<option>"+Tema[i].nombre_tem+"</option>"

@@ -19,7 +19,7 @@ class AuthOneController extends Controller
         $ObjTem = new Tema;
         $Result = $Execute->ListarCategoria();
         $Categoria = json_encode($ObjCat->get());
-        $Tema = json_decode($ObjTem->get());
+        $Tema = json_encode($ObjTem->get());
         // $Categoria = $ObjCat->get();
         // $Tema = $ObjTem->get();
         // dd($decode);

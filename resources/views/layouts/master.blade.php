@@ -21,7 +21,40 @@
         <link rel="stylesheet" href="{{asset('assets/css/welcome.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/home.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/redes.style.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/form.style.css')}}">
         @yield('style')
+        <style>
+          @keyframes sk-rotateplane{
+            0%{
+              transform: rotate(360deg);
+            }
+            100%{
+              transform: rotate(0deg);
+            }
+          }
+
+          #spinner-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 9999999;
+}
+/* spiner-img */
+.spiner-img {
+    width: 60px;
+    height: 60px;
+    /* background-color: #27aae1; */
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    /* box-shadow: 0 0 8px rgba(0,0,0, .3); */
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in;
+    animation: sk-rotateplane 1.2s infinite ease-in;
+}
+        </style>
     </head>
     <body>
 
@@ -177,23 +210,28 @@
           </div>
         </div>
         @endif
+        <div id="spinner-wrapper" >
+      <div class="spinner"><img class="spiner-img" src="{{asset("assets/img/icons/svg/041-girar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"></div>
+    </div>
         <!-- Bootstrap -->
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.master.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.busqueda.js')}}"></script>
         <script src="{{asset('assets/js/script.more.js')}}"></script>
+        <script src="{{asset('assets/js/script.form.js')}}"></script>
         <script>
-          // $(document).ready(function () {
-          //   $.ajax({
-          //     type: "GET",
-          //     url: "Foro.CoBin/CerrarSesion",
-          //     data: "data",
-          //     dataType: "dataType",
-          //     success: function (response) {
+          'use strict'
 
-          //     }
-          //   });
-          // });
+          //Preloader
+          var preloader = $('#spinner-wrapper');
+          $(window).on('load', function() {
+              var preloaderFadeOutTime = 5000;
+
+              function hidePreloader() {
+                  preloader.fadeOut(preloaderFadeOutTime);
+              }
+              hidePreloader();
+          });
         </script>
         @yield('script')
     </body>
