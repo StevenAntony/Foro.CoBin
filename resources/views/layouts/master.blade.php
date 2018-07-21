@@ -51,8 +51,8 @@
     top: 48%;
     left: 48%;
     /* box-shadow: 0 0 8px rgba(0,0,0, .3); */
-    -webkit-animation: sk-rotateplane 1.2s infinite ease-in;
-    animation: sk-rotateplane 1.2s infinite ease-in;
+    -webkit-animation: sk-rotateplane 0.5s infinite ease-in;
+    animation: sk-rotateplane 0.5s infinite ease-in;
 }
         </style>
     </head>
@@ -218,14 +218,13 @@
         <script src="{{asset('assets/js/layout/script.master.js')}}"></script>
         <script src="{{asset('assets/js/layout/script.busqueda.js')}}"></script>
         <script src="{{asset('assets/js/script.more.js')}}"></script>
-        <script src="{{asset('assets/js/script.form.js')}}"></script>
         <script>
           'use strict'
 
           //Preloader
           var preloader = $('#spinner-wrapper');
           $(window).on('load', function() {
-              var preloaderFadeOutTime = 5000;
+              var preloaderFadeOutTime = 500;
 
               function hidePreloader() {
                   preloader.fadeOut(preloaderFadeOutTime);
@@ -234,5 +233,7 @@
           });
         </script>
         @yield('script')
+
+        <script src="{{asset('assets/js/script.form.js')}}"></script>
     </body>
 </html>

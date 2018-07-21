@@ -7,21 +7,51 @@
         <div class="card col-12">
           <form action="{{route('auth.ProcPregunGen')}}" method="post">
               @csrf
-            <div class="form-group row">
-                <label class="col-2 col-form-label">CATEGORIA : </label>
-                <div class="col-10">
-                    <button type="button" class="btn-primary btn btn-desing"></button>
-                    <select class="form-control " id="selCategory" name="selCategory">
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">CATEGORIA : </label>
+                    <div class="col-8">
+                        <div class="group-button-s">
+                            <button type="button" class="btn-danger btn btn-desing-s" aria-selected="false" aria-roledescription="select">
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach (json_decode($selCat) as $s)
+                                    @if ($i == 0)
+                                        {{$s->nombre_cat}}
+                                    @endif
+                                    @php
+                                        $i = $i + 1;
+                                    @endphp
+                                @endforeach
+                            </button>
+                            <select class="form-control select-desing-s" id="selCategory" name="selCategory">
+                                @foreach (json_decode($selCat) as $s)
+                                    <option value="{{json_encode($s->codigo_cat)}}">{{$s->nombre_cat}}</option>
+                                @endforeach
+                            </select>
+                            <ul class="list-select" aria-expanded="false" rol="select">
+                                @foreach (json_decode($selCat) as $s)
+                                    <li class="item-list" aria-selected="false">{{$s->nombre_cat}}</li>
+                                @endforeach
+                            </ul>
 
-                    </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-2 col-form-label">TEMA : </label>
                 <div class="col-10">
+                    {{-- <button type="button" class="btn-success btn-theme btn btn-desing-s" aria-selected="false" aria-roledescription="select"></button> --}}
                     <select class="form-control" id="selTheme" name="selTheme">
-
+                            {{-- @foreach (json_decode($selTem) as $s)
+                                        <option value="">{{$s->nombre_tem}}</option>
+                                    @endforeach --}}
                     </select>
+                        {{-- <ul class="list-select" aria-expanded="false" rol="select">
+                                    <li class="item-list" aria-selected="true"></li>
+                                </ul> --}}
                 </div>
             </div>
             <div class="form-group row">
@@ -54,6 +84,7 @@
       </div>
     </div>
   </div>
+  {{-- <script src="../../../public/assets/js/script.form.js"></script> --}}
 @endsection
 
 @section('script')
@@ -62,36 +93,8 @@
 
             var Categoria = JSON.parse(@json($selCat));
             var Tema = JSON.parse(@json($selTem));
-            // alert(Categoria.length)
-            var opction = ""
-            var opctTeme= ""
-            for (let i = 0; i < Categoria.length; i++) {
-                opction = opction + "<option>"+Categoria[i].nombre_cat+"</option>"
-            }
-            for (let i = 0; i < Tema.length; i++) {
-                if (Tema[i].codigo_cat == Categoria[0].codigo_cat ) {
-                    opctTeme = opctTeme + "<option>"+Tema[i].nombre_tem+"</option>"
-                }
-            }
-            $('.btn-desing').html(Categoria[0].nombre_cat)
-            $('#selCategory').html(opction)
-            $('#selTheme').html(opctTeme)
-            $('#selCategory').click(function () {
-                opctTeme = ""
-                var cal = $('#selCategory').find('option:selected').val(),cod;
-                for (let i = 0; i < Categoria.length; i++) {
-                   if (cal == Categoria[i].nombre_cat) {
-                       cod = Categoria[i].codigo_cat
-                   }
-                }
-                $('.btn-desing').html(cal)
-                for (let i = 0; i < Tema.length; i++) {
-                    if (Tema[i].codigo_cat == cod ) {
-                        opctTeme = opctTeme + "<option>"+Tema[i].nombre_tem+"</option>"
-                    }
-                }
-                $('#selTheme').html(opctTeme)
-            })
+
+
         });
     </script>
 @endsection
