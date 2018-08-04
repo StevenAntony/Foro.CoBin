@@ -56,14 +56,15 @@
   position: absolute;
   top:50px;
   width: 100vw;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 120px);
   z-index: 200;
   right: 0;
   background: #2c2c2c86;
   overflow-y:auto;
-  transform: 1s;
-  transform: translateX(100vw);
+  transition: 1s;
+  /* transform: translateX(100vw); */
   display: none;
+  opacity: 0;
 }
 .head-center .col-right .options{
   cursor: inherit;
@@ -195,6 +196,7 @@
   transform: translatex(0)!important;
   display: block !important;
   z-index: 100;
+  opacity: 1!important;
 }
 
 .show-icon-burger{
@@ -222,6 +224,9 @@
   }
 }
 @media (max-width: 480px) {
+  .box-p{
+    padding: 0;
+  }
   .head-center .menu-burger {
     margin-right: 15px;
   }

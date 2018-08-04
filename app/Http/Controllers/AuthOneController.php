@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Procedure\WebProcedure;
+use Illuminate\Support\Facades\Auth;
 
 use App\Procedure\Generate\Code;
 use Illuminate\Http\Request;
@@ -33,11 +34,18 @@ class AuthOneController extends Controller
         $InputTit = $request->textTitle;
         $InputDes = $request->textDecription;
         $InputDesCode = $request->textDecriptionCode;
-        $codigo = $code->Question('sas','asasa');
-        dd($InputDesCode);
-        // dd($codigo);
+        $codigo = $code->Question($InputThe, Auth::user()->id,'PRE');
+        $objPre = new Pregunta;
+        $objPre->codigo_pre = $codigo;
+        $objPre->codigo_tem = $InputThe;
+        $objPre->user_id = Auth::user()->id;
+        $objPre->titulo_pre = $InputTit;
+        $objPre->descripcion_pre = $InputDes;
+        $objPre->descripcionCode_pre = $InputDesCode;
+        $objPre->estado_pre ="Activo";
+        $objPre->save();
 
-        // dd($InputCat);
+        // dd($codigo);
         return 'a';
     }
 }

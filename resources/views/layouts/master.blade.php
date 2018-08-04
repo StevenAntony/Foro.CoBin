@@ -12,6 +12,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Bootstrap -->
+        {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> --}}
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <!-- reusable -> librerias -->
         <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">

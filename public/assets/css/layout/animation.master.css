@@ -28,7 +28,7 @@
 }
 @keyframes ShowBurger {
   0% {
-    transform: translatex(100vw);
+    transform: translatex(10vw);
     display: none;
   }
   100% {

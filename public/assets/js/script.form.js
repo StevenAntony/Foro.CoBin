@@ -81,7 +81,7 @@ $(document).ready(function () {
             var e = $(this)
             e.click(function () {
               if (ban == 0) {
-              var text = set.item.eq(index).text()
+                var text = '<span>'+set.item.eq(index).text() + '</span>' + '<span class="ti-angle-down"></span>'
               set.btn.eq(index1).html(text)
               set.list.hide()
               set.btn.attr(attr.btn1, 'false')

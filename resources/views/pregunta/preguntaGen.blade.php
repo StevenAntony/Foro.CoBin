@@ -4,109 +4,133 @@
   <div id="cuestionGen">
     <div class="container">
       <div class="box">
+        <br>
+        <div class="page-title">
+              <div class="title_left">
+                <h3 class="h5">PREGUNTAR</h3>
+              </div>
+            </div>
         <div class="card col-12">
-          <form class="d-flex" action="{{route('auth.ProcPregunGen')}}" method="post">
+          <div class="box-p">
+              <form class="d-flex" action="{{route('auth.ProcPregunGen')}}" method="post">
               @csrf
-            <div class="col-lg-6">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">CATEGORIA : </label>
-                    <div class="col-8">
-                        <div class="group-button-s">
-                            <button type="button" class="btn-danger btn btn-desing-s" aria-selected="false" aria-roledescription="select">
-                                @php
-                                    $i = 0;
-                                @endphp
-                                @foreach (json_decode($selCat) as $s)
-                                    @if ($i == 0)
-                                        @php
-                                            $codigoCat = $s->codigo_cat;
-                                        @endphp
-                                        {{$s->nombre_cat}}
-                                    @endif
+                <div class="col-lg-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"><span class="f-bold small">CATEGORIA : </span></label>
+                        <div class="col-sm-8">
+                            <div class="group-button-s">
+                                <button type="button" class="btn-info btn btn-desing-s" aria-selected="false" aria-roledescription="select">
                                     @php
-                                        $i = $i + 1;
+                                        $i = 0;
                                     @endphp
-                                @endforeach
-                            </button>
-                            <select class="form-control select-desing-s" id="selCategory" name="selCategory">
-                                @foreach (json_decode($selCat) as $s)
-                                    <option value="{{$s->codigo_cat}}">{{$s->nombre_cat}}</option>
-                                @endforeach
-                            </select>
-                            <ul class="list-select" id="item-list-categ" aria-expanded="false" rol="select">
-                                @foreach (json_decode($selCat) as $s)
-                                    <li class="item-list" aria-selected="false">{{$s->nombre_cat}}</li>
-                                @endforeach
-                            </ul>
+                                    @foreach (json_decode($selCat) as $s)
+                                        @if ($i == 0)
+                                            @php
+                                                $codigoCat = $s->codigo_cat;
+                                            @endphp
+                                            <span>{{$s->nombre_cat}}</span>
+                                        @endif
+                                        @php
+                                            $i = $i + 1;
+                                        @endphp
+                                    @endforeach
+                                    <span class="ti-angle-down"></span>
+                                </button>
+                                <select class="form-control select-desing-s" id="selCategory" name="selCategory">
+                                    @foreach (json_decode($selCat) as $s)
+                                        <option value="{{$s->codigo_cat}}">{{$s->nombre_cat}}</option>
+                                    @endforeach
+                                </select>
+                                <ul class="list-select" id="item-list-categ" aria-expanded="false" rol="select">
+                                    @foreach (json_decode($selCat) as $s)
+                                        <li class="item-list" aria-selected="false"><span class="text">{{$s->nombre_cat}}</span></li>
+                                    @endforeach
+                                </ul>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label">TEMA : </label>
-                    <div class="col-lg-8">
-                        <div class="group-button-s">
-                            <button type="button" id="btnTema" class="btn-danger btn-theme btn btn-desing-s" aria-selected="false" aria-roledescription="select">
-                                @php
-                                    $ban = 0;
-                                @endphp
-                                @foreach (json_decode($selTem) as $s)
-                                    @if ($s->codigo_cat == $codigoCat)
-                                        @if ($ban == 0)
-                                            {{$s->nombre_tem}}
-                                        @endif
-                                        @php
-                                            $ban = $ban + 1;
-                                        @endphp
-                                    @endif
-                                @endforeach
-                            </button>
-                            <select class="form-control select-desing-s" id="selTheme" name="selTheme">
+                <div class="col-lg-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"><span class="f-bold small">TEMA : </span></label>
+                        <div class="col-sm-8">
+                            <div class="group-button-s">
+                                <button type="button" id="btnTema" class="btn-primary btn-theme btn btn-desing-s" aria-selected="false" aria-roledescription="select">
+                                    @php
+                                        $ban = 0;
+                                    @endphp
                                     @foreach (json_decode($selTem) as $s)
                                         @if ($s->codigo_cat == $codigoCat)
-                                            <option value="{{$s->codigo_tem}}">{{$s->nombre_tem}}</option>
+                                            @if ($ban == 0)
+                                                <span>{{$s->nombre_tem}}</span>
+                                            @endif
+                                            @php
+                                                $ban = $ban + 1;
+                                            @endphp
                                         @endif
                                     @endforeach
-                            </select>
-                            <ul class="list-select" id="item-list-tema" aria-expanded="false" rol="select">
-                                @foreach (json_decode($selTem) as $s)
-                                    @if ($s->codigo_cat == $codigoCat)
-                                    <li class="item-list itemlist-tema" aria-selected="false">{{$s->nombre_tem}}</li>
-                                    @endif
-                                @endforeach
-                            </ul>
+                                    <span class="ti-angle-down"></span>
+                                </button>
+                                <select class="form-control select-desing-s" id="selTheme" name="selTheme">
+                                        @foreach (json_decode($selTem) as $s)
+                                            @if ($s->codigo_cat == $codigoCat)
+                                                <option value="{{$s->codigo_tem}}">{{$s->nombre_tem}}</option>
+                                            @endif
+                                        @endforeach
+                                </select>
+                                <ul class="list-select" id="item-list-tema" aria-expanded="false" rol="select">
+                                    @foreach (json_decode($selTem) as $s)
+                                        @if ($s->codigo_cat == $codigoCat)
+                                        <li class="item-list itemlist-tema" aria-selected="false">{{$s->nombre_tem}}</li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">TITULO : </label>
-                <div class="col-10">
-                    <input type="text" class="form-control" name="textTitle" placeholder="Titulo debe ser corto y directo......">
-                    {{-- <span class="help-block"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span> --}}
+                <div class="col-lg-6">
+                    <div class="m-4"></div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"><span class="f-bold small">TITULO : </span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="textTitle" placeholder="Titulo debe ser corto y directo......">
+                            {{-- <span class="help-block"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span> --}}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">DESCRIPCIÓN : </label>
-                <div class="col-10">
-                    <textarea class="form-control" name="textDecription" id="descripText" cols="30" rows="10" placeholder="Describa de que trata la pregunta que se a realizado en el titulo......"></textarea>
+                <div class="col-lg-6">
+                    <div class="m-4"></div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"><span class="f-bold small">DESCRIPCIÓN : </span></label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control b-r-0" name="textDecription" id="descripText" cols="30" rows="2" placeholder="Describa de que trata la pregunta que se a realizado en el titulo......"></textarea>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">DESCRIPCIÓN EN CODIGO : </label>
-                <div class="col-10">
-                    <textarea class="form-control" name="textDecriptionCode" id="descripCode" cols="30" rows="10" placeholder=" /**No Funciona la Funcion*/
-                    function codigficar(){
-                      return true;
-                    }"></textarea>
+                <div class="col-lg-6">
+                    <div class="m-4"></div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"><span class="f-bold small">DESCRIPCIÓN EN CODIGO : </span></label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control b-r-0" name="textDecriptionCode" id="descripCode" cols="30" rows="2" placeholder=" /**No Funciona la Funcion*/
+                            function codigficar(){
+                            return true;
+                            }"></textarea>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <button type="submit" class="btn btn-default btn-success">Enviar</button>
-            </div>
-          </form>
+                <div class="col-lg-6">
+                    <div class="m-4"></div>
+                    <div class="form-group row jc-flexEnd ai-center" style="height: 100%">
+                        <div class="">
+                            <button type="submit" class="btn btn-default btn-info b-r-0">PREGUNTAR</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -139,7 +163,7 @@
                     for (let i = 0; i < Tema.length; i++) {
                         if (codigoCat == Tema[i].codigo_cat) {
                             if (banEvt == 0) {
-                                btnTem = Tema[i].nombre_tem
+                                btnTem = '<span>'+Tema[i].nombre_tem+ '</span>' + '<span class="ti-angle-down"></span>'
                                 banEvt = 1
                             }
                             optionTem = optionTem + '<option value="'+Tema[i].codigo_tem+'">'+Tema[i].nombre_tem+'</option>'
