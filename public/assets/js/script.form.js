@@ -87,6 +87,7 @@ $(document).ready(function () {
               set.btn.attr(attr.btn1, 'false')
               set.list.attr(attr.list1, 'false')
               $('.select-desing-s option').eq(index).prop('selected', true)
+                // set.item.eq(index).addClass('activateItem')
               // console.log()
               // var val = $('.select-desing-s').eq(index1).find('option:selected').val()
               // console.log(val)

@@ -48,4 +48,16 @@ class AuthOneController extends Controller
         // dd($codigo);
         return 'a';
     }
+
+    public function PreguntaEspec(REQUEST $request)
+    {
+        return $request->id;
+        // $Execute = new WebProcedure;
+        // $ObjCat = new Categoria;
+        // $ObjTem = new Tema;
+        // $Result = $Execute->ListarCategoria();
+        // $Categoria = json_encode($ObjCat->get());
+        // $Tema = json_encode($ObjTem->get());
+        // return view('pregunta.preguntaEsp')->with('selCat', $Categoria)->with('selTem', $Tema)->with('categoria', $Result);
+    }
 }

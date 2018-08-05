@@ -8,7 +8,7 @@
       <div class="container">
         <div class="content">
           <div class="d-flex flex-cover ai-center" style="height: 350px">
-
+            {{$descripcionCat[0]->nombre_cat}}
           </div>
         </div>
       </div>

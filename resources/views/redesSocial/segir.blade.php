@@ -9,5 +9,6 @@
   </div>
 </div>
 <div class="handle-red" state='active'>
-  <img class="img-handle-red" src="{{asset("assets/img/icons/svg/019-flecha-de-desplazamiento-a-la-derecha.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px">
+  <span style="color:white" class="ti-angle-right"></span>
+  {{-- <img class="img-handle-red" src="{{asset("assets/img/icons/svg/019-flecha-de-desplazamiento-a-la-derecha.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="20px" height="20px"> --}}
 </div>

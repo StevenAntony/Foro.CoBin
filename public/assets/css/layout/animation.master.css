@@ -28,11 +28,13 @@
 }
 @keyframes ShowBurger {
   0% {
-    transform: translatex(10vw);
+    /* transform: translatex(10vw); */
+    transform: scaleX(0);
     display: none;
   }
   100% {
-    transform: translatex(0vw);
+    transform: scale3d(1,1,1);
+    /* transform: translatex(0vw); */
     display: block;
   }
 }

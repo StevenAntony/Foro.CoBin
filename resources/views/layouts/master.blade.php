@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/reusable.style.css')}}">
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('assets/css/layout/style.master.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/welcome.style.css')}}">
+        {{-- <link rel="stylesheet" href="{{asset('assets/css/welcome.style.css')}}"> --}}
         <link rel="stylesheet" href="{{asset('assets/css/home.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/redes.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/form.style.css')}}">

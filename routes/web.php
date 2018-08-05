@@ -14,7 +14,6 @@
 /**
  * Web Rutas GET Acceso en General
  */
-
 Route::get('/Foro.CoBin','webController@Index')->name('foro.index');
 Route::get('/Foro.CoBin/{area}/{categoria}', 'webController@CategoriaIndex')->name('foro.categoria');
 Route::get('/Foro.CoBin/{area}/{categoria}/tema/{temaDetalle}', 'webController@TemaIndex')->name('foro.categoria.tema');
@@ -22,19 +21,24 @@ Route::get('/Foro.CoBin/{area}/{categoria}/tema/{temaDetalle}', 'webController@T
 /**
  * Web Rutas POST
  */
-// Route::post('/Foro.CoBin/BusquedaMaster',);
+
+ // Route::post('/Foro.CoBin/BusquedaMaster',);
 Route::post('/Foro.CoBin/BusquedaMaster','webController@BusquedaPOST');
 
 /**
  * Web Rutas Get exclusivo para Auth
  */
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::get('Foro.CoBin/CerrarSesion', 'webController@cerrar')->middleware('auth')->name('cerrar');
-Route::get('Foro.CoBin/autor/actividad/preguntar','AuthOneController@PreguntaGen')->middleware('auth')->name('auth.ViewPregunGen');
 
+//---------
+//Preguntar - Respuestas
+//---------
+Route::get('Foro.CoBin/autor/actividad/preguntar','AuthOneController@PreguntaGen')->middleware('auth')->name('auth.ViewPregunGen');
+Route::get('Foro.CoBin/autor/actividad/preguntar/{tema}/','AuthOneController@PreguntaEspec')->middleware('auth')->name('auth.ViewPregunEspec');
+// ?id={idtem}
 /**
  * Web Rutas POST exclusivo para Auth
  */

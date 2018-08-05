@@ -42,8 +42,20 @@
                                     @endforeach
                                 </select>
                                 <ul class="list-select" id="item-list-categ" aria-expanded="false" rol="select">
+                                    @php
+                                        $i = 0;
+                                    @endphp
                                     @foreach (json_decode($selCat) as $s)
-                                        <li class="item-list" aria-selected="false"><span class="text">{{$s->nombre_cat}}</span></li>
+                                        @if ($i == 0)
+                                        {{-- activateItem --}}
+                                        {{-- <span class="ti-check"></span> --}}
+                                             <li class="item-list " aria-selected="false"><span class="text">{{$s->nombre_cat}}</span> </li>
+                                        @else
+                                            <li class="item-list" aria-selected="false"><span class="text">{{$s->nombre_cat}}</span></li>
+                                        @endif
+                                        @php
+                                            $i = $i + 1;
+                                        @endphp
                                     @endforeach
                                 </ul>
 
@@ -135,6 +147,11 @@
       </div>
     </div>
   </div>
+
+  <ul class="lista-ul">
+      <li class="item-li">a</li>
+      <li class="item-li">v</li>
+  </ul>
   {{-- <script src="../../../public/assets/js/script.form.js"></script> --}}
 @endsection
 

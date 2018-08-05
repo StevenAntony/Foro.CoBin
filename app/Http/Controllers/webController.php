@@ -66,9 +66,11 @@ class webController extends Controller
                 'direct' => ['foro.index', 'foro.categoria', 'foro.categoria'],
             ];
 
+            $Cat = $Execute->BuscarCategoria($categoria);
             $Result = $Execute->ListarCategoria();
             return view('categoria/lenguaje')->with('categoria', $Result)
-                                                ->with('ruta', $Ruta);
+                                                ->with('ruta', $Ruta)
+                                                ->with('descripcionCat',$Cat);
         }else{
             return 'no se encontro la pagina';
         }

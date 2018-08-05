@@ -54,8 +54,19 @@ margin: 2px 0px;
 color: #666;
 transition: 0.5s;
 }
+
+.list-select .activateItem{
+  background-color: #eee;
+}
+
 .list-select .item-list:hover{
   /* background: #137766; */
   background-color: #eee;
   transition: 0.5s;
+}
+
+.list-select .item-list .ti-check::before{
+  position: absolute;
+  right: 20px;
+  top:10px;
 }
