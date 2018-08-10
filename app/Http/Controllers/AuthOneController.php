@@ -21,9 +21,7 @@ class AuthOneController extends Controller
         $Result = $Execute->ListarCategoria();
         $Categoria = json_encode($ObjCat->get());
         $Tema = json_encode($ObjTem->get());
-        // $Categoria = $ObjCat->get();
-        // $Tema = $ObjTem->get();
-        // dd($decode);
+
         return view('pregunta.preguntaGen')->with('selCat',$Categoria)->with('selTem',$Tema)->with('categoria', $Result);
     }
     public function ProcedurePreguntaGen(Request $request)
@@ -51,13 +49,38 @@ class AuthOneController extends Controller
 
     public function PreguntaEspec(REQUEST $request)
     {
-        return $request->id;
-        // $Execute = new WebProcedure;
-        // $ObjCat = new Categoria;
-        // $ObjTem = new Tema;
-        // $Result = $Execute->ListarCategoria();
-        // $Categoria = json_encode($ObjCat->get());
-        // $Tema = json_encode($ObjTem->get());
-        // return view('pregunta.preguntaEsp')->with('selCat', $Categoria)->with('selTem', $Tema)->with('categoria', $Result);
+        $tem = $request->tema;
+        $codigoTem = $request->codigo_Tem;
+        $cat = $request->categoria;
+        $URL = [
+            'nombre' => $tem,
+            'codigo' => $codigoTem,
+            'categoria' => $cat
+        ];
+        $Execute = new WebProcedure;
+        $Result = $Execute->ListarCategoria();
+        return view('pregunta.preguntaEsp')->with('data', $URL)->with('categoria', $Result);
+    }
+
+    public function ProcedurePreguntaEsp(Request $request)
+    {
+        $code = new Code;
+        $InputThe = $request->codigo_tem;
+        $InputTit = $request->textTitle;
+        $InputDes = $request->textDecription;
+        $InputDesCode = $request->textDecriptionCode;
+        $codigo = $code->Question($InputThe, Auth::user()->id,'PRE');
+        $objPre = new Pregunta;
+        $objPre->codigo_pre = $codigo;
+        $objPre->codigo_tem = $InputThe;
+        $objPre->user_id = Auth::user()->id;
+        $objPre->titulo_pre = $InputTit;
+        $objPre->descripcion_pre = $InputDes;
+        $objPre->descripcionCode_pre = $InputDesCode;
+        $objPre->estado_pre ="Activo";
+        $objPre->save();
+
+        // dd($codigo);
+        return 'a';
     }
 }

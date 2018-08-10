@@ -148,10 +148,7 @@
     </div>
   </div>
 
-  <ul class="lista-ul">
-      <li class="item-li">a</li>
-      <li class="item-li">v</li>
-  </ul>
+
   {{-- <script src="../../../public/assets/js/script.form.js"></script> --}}
 @endsection
 

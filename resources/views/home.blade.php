@@ -88,8 +88,9 @@
                             <div class="option-more">
                               <nav class="box">
                                 <ul class="content-more">
+                                  {{-- {{route('auth.ViewPregunEspec',[$t->nombre_tem,$t->codigo_tem])}} --}}
                                   <li class="more-item"><a style="display:block" href="{{route('foro.categoria.tema',['Lenguajes',$t->nombre_cat,$t->nombre_tem])}}"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/097-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
-                                  <li class="more-item"><a style="display:block" href="{{route('auth.ViewPregunEspec',[$t->nombre_tem])}}"><span class="small"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/199-levantar-la-mano-para-preguntar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"> </span> Preguntar</span></a></li>
+                                  <li class="more-item"><a style="display:block" href="{{route('auth.ViewPregunEspec',[$t->nombre_cat,$t->nombre_tem,$t->codigo_tem])}}"><span class="small"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/199-levantar-la-mano-para-preguntar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"> </span> Preguntar</span></a></li>
                                   <li class="more-item"><a style="display:block" href="http://"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/094-notificacion.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Notificar</span></a></li>
                                   <li class="more-item"><a style="display:block" href="http://"><span class="small"></span></a></li>
                                 </ul>

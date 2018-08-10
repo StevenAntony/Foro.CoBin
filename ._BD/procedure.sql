@@ -155,3 +155,12 @@ SELECT * from users where users.id = idMayor ;
 
 END //
 DELIMITER ;
+
+
+-----------------------------
+DELIMITER //
+CREATE PROCEDURE proc_prueba(IN A INT)
+BEGIN
+  SELECT * FROM users WHERE id=A;
+END //
+DELIMITER ;

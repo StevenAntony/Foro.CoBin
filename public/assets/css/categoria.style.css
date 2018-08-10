@@ -1,0 +1,11 @@
+.layer-category{
+  height: 400px;
+  background: #211b11c9;
+  text-align: center;
+}
+.cover-category .text-name{
+  padding-top: 20%;
+}
+.cover-category .bg-gradient-danger {
+  background: linear-gradient(to right, #4B5F71, #364B5F);
+}

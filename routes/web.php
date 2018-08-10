@@ -37,10 +37,11 @@ Route::get('Foro.CoBin/CerrarSesion', 'webController@cerrar')->middleware('auth'
 //Preguntar - Respuestas
 //---------
 Route::get('Foro.CoBin/autor/actividad/preguntar','AuthOneController@PreguntaGen')->middleware('auth')->name('auth.ViewPregunGen');
-Route::get('Foro.CoBin/autor/actividad/preguntar/{tema}/','AuthOneController@PreguntaEspec')->middleware('auth')->name('auth.ViewPregunEspec');
+Route::get('Foro.CoBin/autor/actividad/preguntar/{categoria}/{tema}/{codigo_Tem}','AuthOneController@PreguntaEspec')->middleware('auth')->name('auth.ViewPregunEspec');
 // ?id={idtem}
 /**
  * Web Rutas POST exclusivo para Auth
  */
 Route::post('Foro.CoBin/autor/actividad/preguntar','AuthOneController@ProcedurePreguntaGen')->middleware('auth')->name('auth.ProcPregunGen');
+Route::post('Foro.CoBin/autor/actividad/preguntar/Especifico', 'AuthOneController@ProcedurePreguntaEsp')->middleware('auth')->name('auth.ProcPregunEsp');
 
