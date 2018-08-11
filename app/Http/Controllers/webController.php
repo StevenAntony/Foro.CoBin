@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Procedure\WebProcedure;
+use App\AdministrationDatabase\WebProcedure;
 use App\Categoria;
 use App\Tema;
 use App\DetalleUser;
@@ -59,7 +60,9 @@ class webController extends Controller
     public function CategoriaIndex($area,$categoria)
     {
         $Execute = new WebProcedure;
+        $proc = DB::select('CALL proc_detalleCategoria(?)',['BSQ03']);
 
+        dd($proc);
         if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0)) {
             $Ruta = [
                 'nombre' => ['Inicio', $area , $categoria],
@@ -91,6 +94,8 @@ class webController extends Controller
     {
         $Execute = new WebProcedure;
         $exist = $Execute->SearchThemeInCategory($categoria, $tema);
+
+        // $users = DB::select('CALL proc_detalleCategoria(?)', );
 
         if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0) && (count($Execute->BuscarTema($tema)) > 0) && $exist==1 ) {
             $Ruta = [

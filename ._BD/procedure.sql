@@ -164,3 +164,40 @@ BEGIN
   SELECT * FROM users WHERE id=A;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE proc_cantidadRPTA(IN codigoAux CHAR(10))
+BEGIN
+	DECLARE existe INTEGER;
+    SET existe = (SELECT COUNT(*) FROM pregunta WHERE codigo_pre = codigoAux);
+	IF existe > 0 THEN
+		SELECT p.codigo_pre , count(r.codigo_resp) as cantidad_resp from pregunta p inner join respuesta r on 							p.codigo_pre = r.codigo_pre where p.codigo_pre = codigoAux;
+	END IF;
+END //
+DELIMITER ;
+
+
+CALL proc_cantidadRPTA ('TPREBS15}6')
+
+/*
+	-- @AUTH - @TITLE - @PROCEDURE
+	--============================
+*/
+--
+--	#DETALLES DE LA CATEGORIAS - EL ESTADO SE ESTA ANALIZANDO
+--
+
+DELIMITER //
+CREATE PROCEDURE proc_detalleCategoria(IN codigoAux CHAR(10),IN estadoAux VARCHAR(10))
+BEGIN
+	DECLARE existe INTEGER;
+    SET existe = (SELECT COUNT(*) FROM categoria WHERE codigo_cat = codigoAux);
+    	IF estadoAux = 'nuevo' THEN
+	        SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta FROM tema t LEFT JOIN 						pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.estado_tem = estadoAux AND t.codigo_tem = (SELECT 							taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem) GROUP BY t.nombre_tem;
+        ELSE
+        	IF existe > 0 THEN
+    	    	SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta FROM tema t LEFT JOIN 							pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.codigo_cat = codigoAux AND t.codigo_tem = (SELECT 				             taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem) GROUP BY t.nombre_tem;
+        	END IF;
+        END IF;
+END //
+DELIMITER ;

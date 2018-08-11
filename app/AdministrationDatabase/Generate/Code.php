@@ -1,5 +1,5 @@
 <?php
-namespace App\Procedure\Generate;
+namespace App\AdministrationDatabase\Generate;
 
 use Illuminate\Support\Facades\DB;
 

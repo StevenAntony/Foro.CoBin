@@ -1,5 +1,5 @@
 <?php
-namespace App\Procedure;
+namespace App\AdministrationDatabase;
 
 use Illuminate\Support\Facades\DB;
 use App\Categoria;
@@ -141,6 +141,7 @@ class WebProcedure
 
         $DB = new Categoria;
         $DBT = new Tema;
+
         // select * from tema inner join categoria  on tema.codigo_cat = categoria.codigo_cat WHERE tema.estado_tem = 'nuevo'
         $tema = $DB->join('tema', 'categoria.codigo_cat', '=', 'tema.codigo_cat')
                         ->where('tema.estado_tem' ,'=' ,'nuevo')

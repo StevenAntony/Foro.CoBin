@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Procedure\WebProcedure;
+use App\AdministrationDatabase\WebProcedure;
 use Illuminate\Support\Facades\Auth;
 
 use App\Procedure\Generate\Code;
@@ -80,6 +80,7 @@ class AuthOneController extends Controller
         $objPre->estado_pre ="Activo";
         $objPre->save();
 
+        // $querySQL =
         // dd($codigo);
         return 'a';
     }
