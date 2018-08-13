@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Foro;
 
 use App\AdministrationDatabase\WebProcedure;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Procedure\Generate\Code;
 use Illuminate\Http\Request;
 use App\Categoria;

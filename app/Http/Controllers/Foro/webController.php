@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Foro;
 
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\AdministrationDatabase\WebProcedure;
+
+use App\Http\Controllers\Controller;
+use App\AdministrationDatabase\storedProcedures;
 use App\Categoria;
 use App\Tema;
 use App\DetalleUser;
@@ -60,9 +63,8 @@ class webController extends Controller
     public function CategoriaIndex($area,$categoria)
     {
         $Execute = new WebProcedure;
-        $proc = DB::select('CALL proc_detalleCategoria(?)',['BSQ03']);
-
-        dd($proc);
+        $call = new storedProcedures;
+        // dd($proc);
         if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0)) {
             $Ruta = [
                 'nombre' => ['Inicio', $area , $categoria],
@@ -70,8 +72,10 @@ class webController extends Controller
             ];
 
             $Cat = $Execute->BuscarCategoria($categoria);
+            $detaCat = $call->call('CALL proc_detalleCategoria(?,?)', [$Cat[0]->codigo_cat, 'normal']);
             $Result = $Execute->ListarCategoria();
             return view('categoria/lenguaje')->with('categoria', $Result)
+                                                ->with('detalleCategoria',$detaCat)
                                                 ->with('ruta', $Ruta)
                                                 ->with('descripcionCat',$Cat);
         }else{
@@ -115,6 +119,6 @@ class webController extends Controller
     function cerrar(REQUEST $request) {
         $request->session()->flush();
         Auth::logout();
-        return redirect('/Foro.CoBin');
+        return redirect('/Foro');
     }
 }
