@@ -24,8 +24,11 @@
         <link rel="stylesheet" href="{{asset('assets/css/home.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/redes.style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/form.style.css')}}">
+        <!-- style - icon - font -->
+        <link rel="stylesheet" href="{{asset('assets/iconsfont/font-awesome/css/font-awesome.min.css')}}">
         @yield('style')
-        <style>
+        <style>@keyframes sk-rotateplane{0%{transform:rotate(360deg);}100%{transform:rotate(0deg);}}#spinner-wrapper{position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff;z-index:9999999;}/*spiner-img*/.spiner-img{width:60px;height:60px;/*background-color:#27aae1;*/position:absolute;top:48%;left:48%;-webkit-animation:sk-rotateplane 0.5s infinite ease-in;animation:sk-rotateplane 0.5s infinite ease-in;}</style>
+        {{-- <style>
           @keyframes sk-rotateplane{
             0%{
               transform: rotate(360deg);
@@ -36,27 +39,27 @@
           }
 
           #spinner-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-    z-index: 9999999;
-}
-/* spiner-img */
-.spiner-img {
-    width: 60px;
-    height: 60px;
-    /* background-color: #27aae1; */
-    position: absolute;
-    top: 48%;
-    left: 48%;
-    /* box-shadow: 0 0 8px rgba(0,0,0, .3); */
-    -webkit-animation: sk-rotateplane 0.5s infinite ease-in;
-    animation: sk-rotateplane 0.5s infinite ease-in;
-}
-        </style>
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #fff;
+              z-index: 9999999;
+          }
+          /* spiner-img */
+          .spiner-img {
+              width: 60px;
+              height: 60px;
+              /* background-color: #27aae1; */
+              position: absolute;
+              top: 48%;
+              left: 48%;
+              /* box-shadow: 0 0 8px rgba(0,0,0, .3); */
+              -webkit-animation: sk-rotateplane 0.5s infinite ease-in;
+              animation: sk-rotateplane 0.5s infinite ease-in;
+          }
+        </style> --}}
     </head>
     <body>
 
@@ -213,7 +216,9 @@
         </div>
         @endif
         <div id="spinner-wrapper" >
-      <div class="spinner"><img class="spiner-img" src="{{asset("assets/img/icons/svg/041-girar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px"></div>
+      <div class="spinner">
+        <img class="spiner-img" src="{{asset("assets/img/icons/svg/007-girar-1.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="25px" height="25px">
+      </div>
     </div>
         <!-- Bootstrap -->
         <script src="{{asset('js/app.js')}}"></script>

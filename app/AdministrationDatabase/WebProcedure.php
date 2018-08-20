@@ -44,8 +44,9 @@ class WebProcedure
 
         $Result = $BD->join('tema', 'categoria.codigo_cat','=', 'tema.codigo_cat')->where('categoria.nombre_cat', '=', $Category)
             ->where('tema.nombre_tem', '=', $theme)
-            ->get()->count();
-
+            ->get();
+            // ->count();
+        // dd(count($Result));
 
         return $Result;
     }

@@ -11,6 +11,10 @@
 |
 */
 
+ROUTE::GET('/',function () {
+  return redirect('Foro');
+});
+
 Route::prefix('Foro')->group(function () {
   Route::name('foro.')->group(function () {
     Route::get('/', 'Foro\webController@Index')->name('index');

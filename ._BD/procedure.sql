@@ -191,13 +191,29 @@ DELIMITER //
 CREATE PROCEDURE proc_detalleCategoria(IN codigoAux CHAR(10),IN estadoAux VARCHAR(10))
 BEGIN
 	DECLARE existe INTEGER;
+    DECLARE porcPreg DOUBLE;
     SET existe = (SELECT COUNT(*) FROM categoria WHERE codigo_cat = codigoAux);
+    SET porcPreg = (((SELECT COUNT(*) FROM pregunta p INNER JOIN tema t ON p.codigo_tem = t.codigo_tem WHERE t.codigo_cat = codigoAux) * 100) / (SELECT COUNT(*) FROM pregunta));
     	IF estadoAux = 'nuevo' THEN
 	        SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta FROM tema t LEFT JOIN 						pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.estado_tem = estadoAux AND t.codigo_tem = (SELECT 							taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem) GROUP BY t.nombre_tem;
         ELSE
         	IF existe > 0 THEN
-    	    	SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta FROM tema t LEFT JOIN 							pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.codigo_cat = codigoAux AND t.codigo_tem = (SELECT 				             taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem) GROUP BY t.nombre_tem;
+    	    	SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta,porcPreg as porcentaje FROM tema t LEFT JOIN 							pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.codigo_cat = codigoAux AND t.codigo_tem = (SELECT 				             taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem) GROUP BY t.nombre_tem;
         	END IF;
         END IF;
+END //
+DELIMITER ;
+
+--
+--	#
+--
+DELIMITER //
+CREATE PROCEDURE proc_detalleTema(IN codigoAux CHAR(10))
+BEGIN
+	DECLARE existe INTEGER;
+    SET existe = (SELECT COUNT(*) FROM tema WHERE codigo_tem = codigoAux);
+    IF existe > 0 THEN
+    	SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta,porcPreg as porcentaje 				FROM tema t LEFT JOIN pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.codigo_cat = codigoAux AND t.codigo_tem = 				(SELECT taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem);
+    END IF;
 END //
 DELIMITER ;

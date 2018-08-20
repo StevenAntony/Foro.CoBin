@@ -101,7 +101,7 @@ class webController extends Controller
 
         // $users = DB::select('CALL proc_detalleCategoria(?)', );
 
-        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0) && (count($Execute->BuscarTema($tema)) > 0) && $exist==1 ) {
+        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0) && (count($Execute->BuscarTema($tema)) > 0) && count($exist)==1 ) {
             $Ruta = [
                 'nombre' => ['Inicio', $area , $categoria,'Tema',$tema],
                 'direct' => ['foro.index', 'foro.categoria', 'foro.categoria', 'foro.categoria.tema', 'foro.categoria.tema'],

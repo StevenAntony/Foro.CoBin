@@ -1,0 +1,24 @@
+.wrapper-vitae .cover-layer {
+  background: #1b1b1c82;
+  height: 80vh;
+}
+
+.wrapper-vitae .header-vitae .box-header .txt-contactar{
+  letter-spacing: 2px;
+  padding: 0 20px;
+}
+
+/*     letter-spacing: 2px;
+    padding: 0 20px; */
+
+@media(max-width: 575px){
+  .wrapper-vitae .header-vitae{
+    height: 100vh!important;
+  }
+  .wrapper-vitae .header-vitae .cover-layer{
+    height: 100vh;
+  }
+  .wrapper-vitae .header-vitae .box-center .display-5{
+    font-size: 1.5rem;
+  }
+}

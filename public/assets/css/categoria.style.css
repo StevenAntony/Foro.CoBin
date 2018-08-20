@@ -1,11 +1,41 @@
 .layer-category{
-  height: 400px;
+  height: 100%;
   background: #211b11c9;
   text-align: center;
 }
 .cover-category .text-name{
-  padding-top: 20%;
+  padding-top: 100px;
 }
 .cover-category .bg-gradient-danger {
-  background: linear-gradient(to right, #4B5F71, #364B5F);
+  /* background: linear-gradient(to right, #4B5F71, #364B5F); */
+  /* box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 1); */
+  background: #f5f8fa;
+}
+.cover-category .icon-theme-detail {
+  position: absolute;
+  cursor: pointer;
+}
+.cover-category .more{
+  top: 5px;
+  right: 5px;
+}
+.cover-category .titulo-theme h1{
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 700;
+  padding: 10px 0px;
+  font-family: 'calibri';
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.cover-category .option-more{
+  width: 130px;
+  box-shadow: 0 1px 2px 0 #556080;
+  background: #ffffff;
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  transition: 0.2s;
+  transform: scale(0);
 }

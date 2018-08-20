@@ -6,7 +6,7 @@
           @for ($i = 0; $i < count($ruta['nombre']) ; $i++)
             @if ($ruta['direct'][$i] == 'foro.categoria')
               @if (($i%2 == 0))
-                <span class=""><a class="tags-route" href="{{route($ruta['direct'][$i],[$ruta['nombre'][$i-1],$ruta['nombre'][$i]])}}">{{$ruta['nombre'][$i]}}</a> / </span>
+                <span class=""><a class="tags-route" href="{{route($ruta['direct'][$i],[$ruta['nombre'][$i-1],$ruta['nombre'][$i]])}}">{{$ruta['nombre'][$i]}}</a>  </span>
               @else
                 <span class="tags-route"><label for="">{{$ruta['nombre'][$i]}}</label></span>
               @endif

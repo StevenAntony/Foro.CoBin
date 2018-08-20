@@ -6,7 +6,7 @@ use App\AdministrationDatabase\WebProcedure;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Procedure\Generate\Code;
+use App\AdministrationDatabase\Generate\Code;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Tema;

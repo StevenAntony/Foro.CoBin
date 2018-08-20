@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/Foro.CoBin';
+    protected $redirectTo = '/Foro';
 
     /**
      * Create a new controller instance.
