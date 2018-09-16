@@ -33,6 +33,9 @@ $(document).ready(function () {
       set.iconburger.eq(1).addClass(Class.showiconburger)
       set.contentBurger.addClass(Class.addburger)
       set.contentBurger.removeClass(Class.removeburger)
+      $("body").css({
+        overflow: "hidden"
+      })
       state.burger = false
       set.contentBurger.attr(attr.contentBurger,'true')
       state.contentBurger = set.contentBurger.attr(attr.contentBurger)
@@ -40,6 +43,9 @@ $(document).ready(function () {
       set.contentBurger.removeClass(Class.addburger)
       set.iconburger.eq(0).addClass(Class.showiconburger)
       set.iconburger.eq(1).removeClass(Class.showiconburger)
+      $("body").css({
+        overflow: "auto"
+      })
       state.burger = true
       set.contentBurger.attr(attr.contentBurger, 'false')
       state.contentBurger = set.contentBurger.attr(attr.contentBurger)

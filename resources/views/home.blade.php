@@ -89,7 +89,7 @@
                               <nav class="box">
                                 <ul class="content-more">
                                   {{-- {{route('auth.ViewPregunEspec',[$t->nombre_tem,$t->codigo_tem])}} --}}
-                                  <li class="more-item"><a style="display:block" href="{{route('foro.categoria.tema',['Lenguajes',$t->nombre_cat,$t->nombre_tem])}}"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/097-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
+                                  <li class="more-item"><a style="display:block" href="{{route('foro.categoria.tema',[$t->area_cat  ,$t->nombre_cat,$t->nombre_tem])}}"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/097-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
                                   <li class="more-item"><a style="display:block" href="{{route('auth.ViewPregunEspec',[$t->nombre_cat,$t->nombre_tem,$t->codigo_tem])}}"><span class="small"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/199-levantar-la-mano-para-preguntar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"> </span> Preguntar</span></a></li>
                                   <li class="more-item"><a style="display:block" href="http://"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/094-notificacion.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Notificar</span></a></li>
                                   <li class="more-item"><a style="display:block" href="http://"><span class="small"></span></a></li>
@@ -121,7 +121,9 @@
                               {{-- <a href="#" class="question-item" style="width:100%; display:flex;"> --}}
                               {{-- <h6 class="title-question-bd">a</h6></a> --}}
                                 @for ($i = 0; $i <count($ultimaP['contRPT']) ; $i++)
+                                {{-- {{dd($ultimaP['data'][$i])}} --}}
                                     <li class="row">
+                                      {{-- {{route("foro.categoria.preguntaView",[$ruta['nombre'][(count($ruta['nombre']) - 4)],$ruta['nombre'][(count($ruta['nombre']) - 3)],$ruta['nombre'][(count($ruta['nombre']) - 1)],$dt->codigo_pre])}} --}}
                                         <a href="#" class="question-item" style="width:100%; display:flex;">
                                             <div class="avatar-user"><img src="{{asset("assets/img/icons/svg/118-usuario.svg")}}" alt="" srcset="" width="40px" height="40px"></div>
                                             <div class="title-question-item">

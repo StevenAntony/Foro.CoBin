@@ -157,7 +157,7 @@
                 <img class="img-more" state='true' src="{{asset("assets/img/icons/svg/048-menu-5.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px">
               </div>
               <div class="avatar-theme text-center pt-4"><img class="img-theme" state='true' src="{{asset("assets/img/icons/svg/079-escritorio.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="40px" height="40px"></div>
-              <div class="titulo-theme text-dark"><a style="display:block" href="{{route('foro.categoria.tema',['Lenguajes',$descripcionCat[0]->nombre_cat,$dc->nombre_tem])}}"><h1>{{$dc->nombre_tem}}</h1></a></div>
+              <div class="titulo-theme text-dark"><a style="display:block" href="{{route('foro.categoria.tema',[$ruta['nombre'][(count($ruta['nombre']) - 2)],$ruta['nombre'][(count($ruta['nombre']) - 1)],$dc->nombre_tem])}}"><h1>{{$dc->nombre_tem}}</h1></a></div>
               <div class="data-theme">
                 <div class="date-creation"><span class="small">Fecha :</span>
                   @if ($dc->created_at == null)
@@ -182,8 +182,9 @@
               <div class="option-more">
                 <nav class="box">
                   <ul class="content-more">
-                    {{-- {{route('auth.ViewPregunEspec',[$t->nombre_tem,$t->codigo_tem])}} --}}
-                    <li class="more-item"><a style="display:block" href="{{route('foro.categoria.tema',['Lenguajes',$descripcionCat[0]->nombre_cat,$dc->nombre_tem])}}"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/097-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
+                    {{-- {{dd($descripcionCat)}} --}}
+                    {{-- {{route($ruta['direct'][(count($ruta['nombre']) - 1)],[$ruta['nombre'][(count($ruta['nombre']) - 2)],$ruta['nombre'][(count($ruta['nombre']) - 1)]])}} --}}
+                    <li class="more-item"><a style="display:block" href="{{route('foro.categoria.tema',[$ruta['nombre'][(count($ruta['nombre']) - 2)],$ruta['nombre'][(count($ruta['nombre']) - 1)],$dc->nombre_tem])}}"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/097-enlace.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Visitar</span></a></li>
                     <li class="more-item"><a style="display:block" href="{{route('auth.ViewPregunEspec',[$descripcionCat[0]->nombre_cat,$dc->nombre_tem,$dc->codigo_tem])}}"><span class="small"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/199-levantar-la-mano-para-preguntar.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"> </span> Preguntar</span></a></li>
                     <li class="more-item"><a style="display:block" href="http://"><span><img class="" state='true' src="{{asset("assets/img/icons/svg/094-notificacion.svg")}}" alt="triangle with all three sides equal" sizes="" srcset="" width="15px" height="15px"></span> <span class="small"> Notificar</span></a></li>
                     <li class="more-item"><a style="display:block" href="http://"><span class="small"></span></a></li>

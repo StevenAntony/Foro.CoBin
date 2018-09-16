@@ -51,8 +51,19 @@ class webController extends Controller
             $score = null;
         }
         // dd($score[0]);
+        // $let = [A-}Z];
+        // dd(range(0,100,5));
+
+        // dd(range('A', 'Z'));
+        // $code = 'alal';
+        // $bol = range('a', 'z');
+        // $r = ['a','b'];
+        // $bol = strpos($code, $r);
+        // dd($bol);
+
         $TemasDetalle = $Execute->ListarNewTema();
         $Result = $Execute->ListarCategoria();
+        // dd($UltimoPregunta);
         return view('home')->with('categoria',$Result)
                               ->with('ruta',$Ruta)
                               ->with('score',$score[0])
@@ -65,7 +76,7 @@ class webController extends Controller
         $Execute = new WebProcedure;
         $call = new storedProcedures;
         // dd($proc);
-        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0)) {
+        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base de Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0)) {
             $Ruta = [
                 'nombre' => ['Inicio', $area , $categoria],
                 'direct' => ['foro.index', 'foro.categoria', 'foro.categoria'],
@@ -80,6 +91,7 @@ class webController extends Controller
                                                 ->with('descripcionCat',$Cat);
         }else{
             return 'no se encontro la pagina';
+
         }
     }
 
@@ -101,20 +113,44 @@ class webController extends Controller
 
         // $users = DB::select('CALL proc_detalleCategoria(?)', );
 
-        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0) && (count($Execute->BuscarTema($tema)) > 0) && count($exist)==1 ) {
+        if (($area == 'Lenguaje' || $area == 'Sistema Operativo' || $area == 'Base de Datos'|| $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria))>0) && (count($Execute->BuscarTema($tema)) > 0) && count($exist)==1 ) {
             $Ruta = [
                 'nombre' => ['Inicio', $area , $categoria,'Tema',$tema],
                 'direct' => ['foro.index', 'foro.categoria', 'foro.categoria', 'foro.categoria.tema', 'foro.categoria.tema'],
             ];
-
+            $call = new storedProcedures;
+            $DetalleTema = $call->call('CALL proc_detalleTema(?)', [$exist[0]->codigo_tem]);
+            // dd($DetalleTema);
             $Result = $Execute->ListarCategoria();
             return view('tema/tema')->with('categoria', $Result)
+                                    ->with('detalle',$DetalleTema)
                                                 ->with('ruta', $Ruta);
         }else{
             return 'no se encontro la pagina';
         }
     }
 
+    public function PreguntaView($area, $categoria, $tema, $codigoPre)
+    {
+        // dd($codigoPre);
+        $Execute = new WebProcedure;
+        $exist = $Execute->SearchThemeInCategory($categoria, $tema);
+        if (($area == 'Lenguajes' || $area == 'Sistema Operativo' || $area == 'Base de Datos' || $area == 'Herramientas') && (count($Execute->BuscarCategoria($categoria)) > 0) && (count($Execute->BuscarTema($tema)) > 0) && count($exist) == 1) {
+            $Ruta = [
+                'nombre' => ['Inicio', $area, $categoria, 'Tema', $tema],
+                'direct' => ['foro.index', 'foro.categoria', 'foro.categoria', 'foro.categoria.tema', 'foro.categoria.tema'],
+            ];
+            $call = new storedProcedures;
+            $DetallePre = $call->call('CALL proc_detallePregunta(?)', [$codigoPre]);
+            // dd($DetallePre);
+            $Result = $Execute->ListarCategoria();
+            return view('pregunta/preguntaView')->with('categoria', $Result)
+                                                ->with('pregunta',$DetallePre)
+                                                ->with('ruta', $Ruta);
+        }else{
+            return "no se encontro la pagina";
+        }
+    }
 
     function cerrar(REQUEST $request) {
         $request->session()->flush();

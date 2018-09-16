@@ -33,9 +33,11 @@
 }
 .location-route{
   background: #ffffff;
+  /* overflow-x: scroll;
+  overflow-y: hidden; */
 }
 .location-route .d-flex{
-  height: 50px;
+  height: 60px;
 }
 .tags-route{
   position: relative;

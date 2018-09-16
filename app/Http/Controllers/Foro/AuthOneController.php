@@ -19,6 +19,11 @@ class AuthOneController extends Controller
         $Execute = new WebProcedure;
         $ObjCat = new Categoria;
         $ObjTem = new Tema;
+        // $code = new Code;
+        // dd($code->code_key('34561782899812921815','none','Integer'));
+        // dd($code->type_data('12ma'));
+        // dd(range('A','z'));
+
         $Result = $Execute->ListarCategoria();
         $Categoria = json_encode($ObjCat->get());
         $Tema = json_encode($ObjTem->get());
@@ -33,7 +38,10 @@ class AuthOneController extends Controller
         $InputTit = $request->textTitle;
         $InputDes = $request->textDecription;
         $InputDesCode = $request->textDecriptionCode;
-        $codigo = $code->Question($InputThe, Auth::user()->id,'PRE');
+        // $codigo = $code->Question($InputThe, Auth::user()->id,'PRE');
+        $date = new \DateTime();
+        $date = date('Ymdh');
+        $codigo = $code->code_key($date, 'none', 'Integer');
         $objPre = new Pregunta;
         $objPre->codigo_pre = $codigo;
         $objPre->codigo_tem = $InputThe;

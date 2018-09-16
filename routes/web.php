@@ -20,6 +20,7 @@ Route::prefix('Foro')->group(function () {
     Route::get('/', 'Foro\webController@Index')->name('index');
     Route::get('/{area}/{categoria}', 'Foro\webController@CategoriaIndex')->name('categoria');
     Route::get('/{area}/{categoria}/tema/{temaDetalle}', 'Foro\webController@TemaIndex')->name('categoria.tema');
+    Route::get('/{area}/{categoria}/tema/{temaDetalle}/{codigoPre}', 'Foro\webController@PreguntaView')->name('categoria.preguntaView');
   });
 });
 

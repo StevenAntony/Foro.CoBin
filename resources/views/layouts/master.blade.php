@@ -16,7 +16,8 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <!-- reusable -> librerias -->
         <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/reusable.style.css')}}">
+        <!--<link rel="stylesheet" href="{{asset('assets/css/reusable.style.css')}}">-->
+        <link rel="stylesheet" href="{{asset('assets/css/backuse.css')}}">
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('assets/css/layout/style.master.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/welcome.style.css')}}">
@@ -156,7 +157,7 @@
                                 <li class="option-item" state='hidden'><label class="d-flex jc-spaceBetween">Base Datos <i class="ti-angle-down"></i></label>
                                   <ul class="sub-options">
                                       @foreach ($categoria['BaseDatos'] as $c)
-                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Base Datos',$c->nombre_cat])}}">{{$c->nombre_cat}}</a></li>
+                                          <li class="sub-option-item"><a href="{{route('foro.categoria',['Base de Datos',$c->nombre_cat])}}">{{$c->nombre_cat}}</a></li>
                                       @endforeach
                                   </ul>
                                 </li>

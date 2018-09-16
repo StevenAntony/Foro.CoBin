@@ -190,6 +190,7 @@ CALL proc_cantidadRPTA ('TPREBS15}6')
 DELIMITER //
 CREATE PROCEDURE proc_detalleCategoria(IN codigoAux CHAR(10),IN estadoAux VARCHAR(10))
 BEGIN
+
 	DECLARE existe INTEGER;
     DECLARE porcPreg DOUBLE;
     SET existe = (SELECT COUNT(*) FROM categoria WHERE codigo_cat = codigoAux);
@@ -205,7 +206,7 @@ END //
 DELIMITER ;
 
 --
---	#
+--	#DETALLES DE LOS TEMAS
 --
 DELIMITER //
 CREATE PROCEDURE proc_detalleTema(IN codigoAux CHAR(10))
@@ -213,7 +214,30 @@ BEGIN
 	DECLARE existe INTEGER;
     SET existe = (SELECT COUNT(*) FROM tema WHERE codigo_tem = codigoAux);
     IF existe > 0 THEN
-    	SELECT t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta,porcPreg as porcentaje 				FROM tema t LEFT JOIN pregunta p ON p.codigo_tem = t.codigo_tem LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.codigo_cat = codigoAux AND t.codigo_tem = 				(SELECT taux.codigo_tem FROM tema taux WHERE t.codigo_tem = taux.codigo_tem);
+    	SELECT t.codigo_tem, t.codigo_cat , t.nombre_tem , t.estado_tem , t.created_at as created_tem, p.codigo_pre ,p.user_id,p.titulo_pre,p.descripcion_pre,   p.estado_pre,p.created_at as created_pre,u.name,u.created_at as created_user,du.avatar_dus,du.puntaje_dus,du.nivel,du.estado,COUNT(r.codigo_resp) AS cantidadRespuesta   FROM tema t LEFT JOIN pregunta p ON p.codigo_tem = t.codigo_tem INNER JOIN users u ON p.user_id = u.id INNER JOIN detalleuser du ON u.id = du.user_id LEFT JOIN respuesta r ON p.codigo_pre=r.codigo_pre WHERE t.codigo_tem = (SELECT taux.codigo_tem FROM tema taux WHERE taux.codigo_tem=codigoAux) GROUP BY p.titulo_pre;
     END IF;
 END //
 DELIMITER ;
+
+-- t.nombre_tem,t.codigo_tem,t.estado_tem,t.created_at,COUNT(p.codigo_pre) AS cantidadPregunta,COUNT(r.codigo_resp) AS cantidadRespuesta,porcPreg as porcentaje
+
+--
+--	#DETALLE CADA PREGUNTA
+--
+-- t.codigo_tem,t.codigo_cat,t.nombre_tem,p.codigo_pre,p.titulo_pre,p.descripcion_pre,p.descripcionCode_pre,p.estado_pre,p.created_at,up.id AS iduserpre,up.name As			nameuserpre,pdu.avatar_dus,pdu.puntaje_dus,pdu.nivel,pdu.estado,rp.codigo_resp,rp.descripcion_resp,rp.descripcionCode_resp,rp.estado_resp,rp.valoracion_resp,rp.created_at 			as creacionRPT,urp.id AS iduserresp,urp.name AS nameuserresp,rdu.avatar_dus as avatarresp,rdu.puntaje_dus AS puntajeresp,rdu.nivel AS nivelresp,rdu.estado AS estadoresp
+DELIMITER //
+CREATE PROCEDURE proc_detallePregunta(IN codigoAux CHAR(15))
+BEGIN
+    DECLARE existe INTEGER;
+    SET existe = (SELECT COUNT(*) FROM pregunta WHERE pregunta.codigo_pre = codigoAux);
+    IF existe > 0 THEN
+        SELECT t.codigo_tem,t.codigo_cat,t.nombre_tem,p.codigo_pre,p.titulo_pre,p.descripcion_pre,p.descripcionCode_pre,p.estado_pre,p.created_at,up.id AS iduserpre,up.name As			nameuserpre,pdu.avatar_dus,pdu.puntaje_dus,pdu.nivel,pdu.estado,rp.codigo_resp,rp.descripcion_resp,rp.descripcionCode_resp,rp.estado_resp,rp.valoracion_resp,rp.created_at 			as creacionRPT,urp.id AS iduserresp,urp.name AS nameuserresp,rdu.avatar_dus as avatarresp,rdu.puntaje_dus AS puntajeresp,rdu.nivel AS nivelresp,rdu.estado AS estadoresp from tema t LEFT JOIN pregunta p ON t.codigo_tem = p.codigo_tem LEFT JOIN users up ON p.user_id = up.id LEFT JOIN detalleuser pdu ON up.id = pdu.user_id LEFT JOIN 				respuesta rp ON p.codigo_pre = rp.codigo_pre LEFT JOIN users urp ON rp.user_id = urp.id LEFT JOIN detalleuser rdu ON urp.id = rdu.user_id
+        	WHERE p.codigo_pre = codigoAux;
+
+    END IF;
+END //
+DELIMITER ;
+
+
+    -- // saber si es completamente structurado de letras    // ctype_alpha();
+    -- // $bol = strpos($code,);$b

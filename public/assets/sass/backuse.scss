@@ -1,4 +1,4 @@
-body{
+body {
   color: #636b6f;
   font-family: sans-serif;
   font-weight: 100;
@@ -7,10 +7,10 @@ body{
   margin: 0;
   overflow-x: hidden;
 }
-.row{
+.row {
   margin:0;
 }
-.btn:focus{
+.btn:focus {
   outline: none;
       box-shadow: none!important;
 }
@@ -22,14 +22,14 @@ a,a:hover{
   text-decoration: none;
   color:inherit;
 }
-ul{
+ul {
   margin-bottom: 0;
   padding: 0;
 }
-li{
+li {
   list-style: none;
 }
-label{
+label {
   margin: 0;
 }
 
@@ -46,10 +46,10 @@ label{
 }
 
 .b-r-0{
-  border-radius: 0;
+  border-radius: 0!important;
 }
 .b-0{
-  border: none;
+  border: none!important;
 }
 .d-flex{
   display: flex;
@@ -75,8 +75,7 @@ label{
 }
 
 /*
-* Tamañpos width de la pantalla
-*
+ Tamañpos width de la pantalla
 */
 .w-1{
   width: 80px;
@@ -112,8 +111,7 @@ label{
 }
 
 /*
-* STYLE TIPOS DE LETRAS
-*
+ STYLE TIPOS DE LETRAS
 */
 .o-0{
   opacity: 0;
@@ -159,7 +157,7 @@ label{
 }
 
 /*
-* POSICIONES DE CONTERIDOS
+ POSICIONES DE CONTERIDOS
 */
 .p-relative{
   position: relative;
@@ -236,17 +234,17 @@ label{
 } */
 .overflow-auto-info::-webkit-scrollbar {
   height: 5px;
-  background-color: #2397a94f;
+  background: rgba(36, 152, 170, 0.31);
   /* display: none; */
 }
 .ooverflow-auto-info::-webkit-scrollbar-track {
-  background-color: #2397a94f;
+  background: rgba(35, 151, 169, 0.31);
 }
 .overflow-auto-info::-webkit-scrollbar-thumb {
-  background-color: #17a2b8;
+  background: #17a2b8;
 }
 .overflow-auto-info::-webkit-scrollbar-corner {
-  background-color: #fff;
+  background: #fff;
 }
 /* .overflow-auto-info::-webkit-scrollbar-button {
   background-color: #40465a;
@@ -259,17 +257,17 @@ label{
 *   COLORES Y BACKGROUND
 */
 .layer-bg-dark{
-  background-color: #343a40de;
+  background: rgba(52, 58, 64, 0.871);
 }
 .box-sha{
   box-shadow: 0 3px 10px rgba(0,0,0,0.23), 0 3px 10px rgba(0,0,0,0.16);
 }
 
 /*
-* AVATAR - SM - MD - LG
+ AVATAR - SM - MD - LG
 */
 
-.avatar {
+.cs-avatar {
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
@@ -283,4 +281,32 @@ label{
   vertical-align: bottom;
   font-size: .875rem;
   user-select: inherit;
+}
+.cs-avatar-sm {
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: .75rem;
+}
+.cs-avatar-md {
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  font-size: 1rem;
+}
+.cs-avatar-lg {
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.25rem;
+}
+
+// ---- TAGS
+
+.tag{
+  background: #636b6f;
+  color: #fff;
+  font-size: .6rem;
+  border-radius: 20px;
+  padding: 3px 8px;
 }
